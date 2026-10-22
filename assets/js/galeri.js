@@ -100,13 +100,17 @@
     const src = p.src || p.thumbnail || p.media_url || "";
     const caption = p.caption || "Foto angkatan";
     const permalink = p.permalink || p.link || IG.profileUrl;
+    const warna = p.warna || "#1b6ca8";
     const media = src
-      ? '<img class="gallery-item__img" src="' + esc(src) + '" alt="' + esc(caption) + '" loading="lazy" />'
-      : '<div class="gallery-item__ph" style="background:linear-gradient(135deg,#d62976,#6228d7)">' + icon("image") + "</div>";
+      ? '<img class="gallery-item__img" src="' + esc(src) + '" alt="' + esc(caption) + '" loading="lazy" decoding="async" />'
+      : '<span class="gallery-item__ph" style="background:linear-gradient(135deg,' + esc(warna) + ',#0a2540)">' + icon("image") + "</span>";
     return (
-      '<figure class="gallery-item" data-index="' + i + '" style="cursor:pointer">' + media +
-        '<a class="gallery-item__ig" href="' + esc(permalink) + '" target="_blank" rel="noopener" title="Lihat di Instagram">' + icon("instagram") + "</a>" +
-        '<figcaption class="gallery-item__cap">' + esc(caption.length > 60 ? caption.slice(0, 60) + "..." : caption) + "</figcaption>" +
+      '<figure class="gallery-item" data-index="' + i + '">' +
+        '<button class="gallery-item__open" type="button" aria-label="Perbesar foto: ' + esc(caption) + '">' +
+          media +
+          '<span class="gallery-item__cap">' + esc(caption.length > 60 ? caption.slice(0, 60) + "..." : caption) + "</span>" +
+        "</button>" +
+        '<a class="gallery-item__ig" href="' + esc(permalink) + '" target="_blank" rel="noopener" title="Lihat di Instagram" aria-label="Buka di Instagram">' + icon("instagram") + "</a>" +
       "</figure>"
     );
   }
@@ -127,7 +131,11 @@
 
     grid.innerHTML = list.map(postCard).join("");
     lightboxItems = list.map(function (p) {
-      return { src: p.src || p.thumbnail || p.media_url || "", caption: p.caption || "" };
+      return {
+        src: p.src || p.thumbnail || p.media_url || "",
+        caption: p.caption || "",
+        warna: p.warna || "#1b6ca8"
+      };
     });
 
     if (elCount) elCount.innerHTML = "Menampilkan <b>" + list.length + "</b> dari <b>" + posts.length + "</b> foto";
@@ -153,18 +161,24 @@
     });
     elManual.innerHTML = items.map(function (it, i) {
       const inner = it.src
-        ? '<img class="gallery-item__img" src="' + esc(it.src) + '" alt="' + esc(it.caption) + '" loading="lazy" />'
-        : '<div class="gallery-item__ph" style="background:linear-gradient(135deg,' + esc(it.warna) + ",#0a2540)\">" + icon("image") + "</div>";
-      return '<figure class="gallery-item" data-index="' + i + '" style="cursor:pointer">' + inner +
-        '<figcaption class="gallery-item__cap">' + esc(it.caption) + "</figcaption></figure>";
+        ? '<img class="gallery-item__img" src="' + esc(it.src) + '" alt="' + esc(it.caption) + '" loading="lazy" decoding="async" />'
+        : '<span class="gallery-item__ph" style="background:linear-gradient(135deg,' + esc(it.warna) + ",#0a2540)\">" + icon("image") + "</span>";
+      return '<figure class="gallery-item" data-index="' + i + '">' +
+        '<button class="gallery-item__open" type="button" aria-label="Perbesar foto: ' + esc(it.caption) + '">' +
+          inner +
+          '<span class="gallery-item__cap">' + esc(it.caption) + "</span>" +
+        "</button></figure>";
     }).join("");
 
     const lb = initLightbox();
-    elManual.addEventListener("click", function (e) {
-      const fig = e.target.closest(".gallery-item");
+    function openManual(target) {
+      const btn = target.closest(".gallery-item__open");
+      if (!btn) return;
+      const fig = btn.closest(".gallery-item");
       if (!fig) return;
-      lb.openWith(items.map(function (it) { return { src: it.src, caption: it.caption }; }), Number(fig.getAttribute("data-index")) || 0);
-    });
+      lb.openWith(items.map(function (it) { return { src: it.src, caption: it.caption, warna: it.warna }; }), Number(fig.getAttribute("data-index")) || 0);
+    }
+    elManual.addEventListener("click", function (e) { openManual(e.target); });
   }
 
   /* ---------- Filter angkatan/kelas ---------- */
@@ -186,6 +200,16 @@
     });
   }
   if (elFilter) elFilter.addEventListener("change", applyFilter);
+
+  /* ---------- Buka lightbox dari grid ---------- */
+  function openFromGrid(target) {
+    const btn = target.closest(".gallery-item__open");
+    if (!btn) return;
+    const fig = btn.closest(".gallery-item");
+    if (!fig) return;
+    initLightbox().openWith(lightboxItems, Number(fig.getAttribute("data-index")) || 0);
+  }
+  grid.addEventListener("click", function (e) { openFromGrid(e.target); });
 
   /* ---------- Jalankan ---------- */
   loadFromApi()

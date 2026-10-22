@@ -30,6 +30,7 @@ window.IG_CACHE = {
       caption: "Hari pertama masuk kelas 6B - seragam baru, wajah baru",
       angkatan: "2021/2022",
       src: "",
+      warna: "#f59e0b",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-06-20T00:00:00.000Z"
@@ -39,6 +40,7 @@ window.IG_CACHE = {
       caption: "Juara 2 Cerdas Cermat tingkat kabupaten",
       angkatan: "2021/2022",
       src: "",
+      warna: "#0d9488",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-04-15T00:00:00.000Z"
@@ -48,6 +50,7 @@ window.IG_CACHE = {
       caption: "Latihan paduan suara tiap Jumat sore",
       angkatan: "2021/2022",
       src: "",
+      warna: "#7c3aed",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-05-27T00:00:00.000Z"
@@ -57,6 +60,7 @@ window.IG_CACHE = {
       caption: "Final futsal antar kelas di halaman sekolah",
       angkatan: "2021/2022",
       src: "",
+      warna: "#1b6ca8",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-02-18T00:00:00.000Z"
@@ -66,15 +70,17 @@ window.IG_CACHE = {
       caption: "Final robotika tingkat nasional - bangga mewakili SMPN 1 Rongkop",
       angkatan: "2021/2022",
       src: "",
+      warna: "#d62976",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-08-12T00:00:00.000Z"
     },
     {
       id: "manual-06",
-      caption: "Praktiklapangan kelas teknik bangunan",
+      caption: "Praktik lapangan kelas teknik bangunan",
       angkatan: "2021/2022",
       src: "",
+      warna: "#0891b2",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-10-05T00:00:00.000Z"
@@ -84,6 +90,7 @@ window.IG_CACHE = {
       caption: "Upacara bendera hari Senin - angkatan 6B hadir lengkap",
       angkatan: "2021/2022",
       src: "",
+      warna: "#ef4444",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-01-17T00:00:00.000Z"
@@ -93,15 +100,17 @@ window.IG_CACHE = {
       caption: "Perpisahan kelas 6 - kami wisuda!",
       angkatan: "2021/2022",
       src: "",
+      warna: "#22c55e",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-06-25T00:00:00.000Z"
     },
     {
       id: "manual-09",
-      caption: "Kromptu bareng sebelum sekolah bubar",
+      caption: "Kumpul bareng sebelum sekolah bubar",
       angkatan: "2021/2022",
       src: "",
+      warna: "#6366f1",
       permalink: "https://www.instagram.com/63b_archive/",
       mediaType: "image",
       date: "2022-03-08T00:00:00.000Z"

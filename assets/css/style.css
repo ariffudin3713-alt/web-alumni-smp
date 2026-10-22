@@ -20,7 +20,10 @@
   --c-line: #e2e8f0;
   --c-text: #0f172a;
   --c-text-2: #475569;
-  --c-text-3: #7c8aa0;
+  --c-text-3: #5a6a80;
+  /* Warna teks di atas latar lembut (kontras AA) */
+  --c-teal-text: #0f766e;
+  --c-blue-text: #1b6ca8;
 
   --radius-sm: 10px;
   --radius: 16px;
@@ -46,7 +49,9 @@ html[data-theme="dark"] {
   --c-line: #26324a;
   --c-text: #eef2f8;
   --c-text-2: #aab6ca;
-  --c-text-3: #7d8ba3;
+  --c-text-3: #9aa8bd;
+  --c-teal-text: #5eead4;
+  --c-blue-text: #93c5fd;
   --c-cream: #101827;
   --c-blue-soft: #16283f;
   --c-teal-soft: #10312f;
@@ -89,6 +94,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .muted { color: var(--c-text-2); }
 .small { font-size: .875rem; }
 .hide { display: none !important; }
+[hidden] { display: none !important; }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
@@ -102,7 +108,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--c-teal); background: var(--c-teal-soft);
+  color: var(--c-teal-text); background: var(--c-teal-soft);
   padding: 6px 14px; border-radius: var(--radius-pill); margin-bottom: 14px;
 }
 .eyebrow::before { content: ""; width: 18px; height: 2px; background: currentColor; border-radius: 2px; }
@@ -246,8 +252,8 @@ html[data-theme="dark"] .theme-toggle .moon { display: block; }
   font-size: .76rem; font-weight: 700; background: var(--c-surface-2); color: var(--c-text-2);
 }
 .chip svg { width: 13px; height: 13px; }
-.chip--teal { background: var(--c-teal-soft); color: var(--c-teal); }
-.chip--blue { background: var(--c-blue-soft); color: var(--c-blue); }
+.chip--teal { background: var(--c-teal-soft); color: var(--c-teal-text); }
+.chip--blue { background: var(--c-blue-soft); color: var(--c-blue-text); }
 .chip--gold { background: var(--c-gold-soft); color: #b45309; }
 html[data-theme="dark"] .chip--gold { color: #fbbf24; }
 
@@ -360,8 +366,9 @@ html[data-theme="dark"] .feature--gold .feature__icon { color: #fbbf24; }
 .panel__title { font-size: 1rem; margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
 .panel__title svg { width: 18px; height: 18px; color: var(--c-blue); }
 
-.info-list li { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--c-line); font-size: .92rem; }
-.info-list li:last-child { border-bottom: 0; }
+.info-list { margin: 0; }
+.info-list__row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--c-line); font-size: .92rem; }
+.info-list__row:last-child { border-bottom: 0; }
 .info-list dt { color: var(--c-text-3); min-width: 96px; font-weight: 600; }
 .info-list dd { margin: 0; font-weight: 600; }
 
@@ -446,6 +453,11 @@ html[data-theme="dark"] .quote-block { background: rgba(245, 158, 11, .12); }
   display: block; cursor: pointer; transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .gallery-item:hover { transform: scale(1.015); box-shadow: var(--shadow); }
+.gallery-item__open {
+  position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+  padding: 0; border: 0; background: none; color: inherit; text-align: inherit;
+}
+.gallery-item__open:focus-visible { outline: 3px solid var(--c-gold); outline-offset: -3px; }
 .gallery-item__img { width: 100%; height: 100%; object-fit: cover; }
 .gallery-item__ph { width: 100%; height: 100%; display: grid; place-items: center; color: rgba(255, 255, 255, .85); }
 .gallery-item__ph svg { width: 34px; height: 34px; }
@@ -463,6 +475,10 @@ html[data-theme="dark"] .quote-block { background: rgba(245, 158, 11, .12); }
 }
 .gallery-item:hover .gallery-item__ig { opacity: 1; transform: translateY(0); }
 .gallery-item__ig svg { width: 18px; height: 18px; }
+@media (hover: none) {
+  .gallery-item__cap { opacity: 1; transform: none; }
+  .gallery-item__ig { opacity: 1; transform: none; }
+}
 
 .lightbox {
   position: fixed; inset: 0; z-index: 300; background: rgba(4, 12, 24, .93);
@@ -475,6 +491,14 @@ html[data-theme="dark"] .quote-block { background: rgba(245, 158, 11, .12); }
   width: 100%; max-height: 74vh; object-fit: contain; border-radius: var(--radius);
   background: rgba(255, 255, 255, .05);
 }
+.lightbox__ph {
+  display: grid; place-items: center; gap: 14px; aspect-ratio: 4 / 3;
+  max-height: 74vh; padding: 28px; border-radius: var(--radius); color: #fff; text-align: center;
+  background: linear-gradient(135deg, #d62976, #0a2540);
+}
+.lightbox__ph-icon { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; background: rgba(255, 255, 255, .16); }
+.lightbox__ph-icon svg { width: 26px; height: 26px; }
+.lightbox__ph-text { font-weight: 700; font-size: 1.05rem; max-width: 34ch; line-height: 1.4; }
 .lightbox__cap { color: rgba(255, 255, 255, .85); text-align: center; margin-top: 14px; font-size: .95rem; }
 .lightbox__close {
   position: absolute; top: 22px; right: 22px; width: 44px; height: 44px; border-radius: 50%;
@@ -538,15 +562,16 @@ html[data-theme="dark"] .quote-block { background: rgba(245, 158, 11, .12); }
 /* ---------- 15. Daftar sekolah lanjutan ---------- */
 .school-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
 .school-card {
+  scroll-margin-top: calc(var(--header-h, 72px) + 24px);
   background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius);
   padding: 22px; transition: transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 .school-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
 .school-card__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
 .school-card__name { font-size: 1.03rem; margin: 0; }
-.school-card__type { font-size: .76rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; color: var(--c-teal); }
+.school-card__type { font-size: .76rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; color: var(--c-teal-text); }
 .school-card__count { font-size: 1.6rem; font-weight: 900; color: var(--c-navy); line-height: 1; }
-html[data-theme="dark"] .school-card__count { color: var(--c-blue); }
+html[data-theme="dark"] .school-card__count { color: var(--c-blue-text); }
 .school-card__list { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--c-line); }
 .school-card__list a { display: flex; align-items: center; gap: 9px; font-size: .88rem; font-weight: 600; color: var(--c-text-2); }
 .school-card__list a:hover { color: var(--c-blue); }

@@ -110,17 +110,17 @@
         "<aside>" +
           '<div class="panel">' +
             '<h3 class="panel__title">' + icon("users") + " Biodata</h3>" +
-            '<ul class="info-list">' +
-              "<li><dt>Nama</dt><dd>" + esc(a.name) + "</dd></li>" +
-              (a.nickname ? "<li><dt>Panggilan</dt><dd>" + esc(a.nickname) + "</dd></li>" : "") +
-              "<li><dt>TTL</dt><dd>" + esc((a.ttl || {}).tempat || "-") + ", " + esc((a.ttl || {}).tanggal || "-") + "</dd></li>" +
-              "<li><dt>Jenis Kelamin</dt><dd>" + (a.gender === "P" ? "Perempuan" : "Laki-laki") + "</dd></li>" +
-              "<li><dt>Angkatan</dt><dd>" + esc(a.angkatan) + "</dd></li>" +
-              "<li><dt>Kelas</dt><dd>" + esc(a.kelas) + "</dd></li>" +
-              "<li><dt>Minat</dt><dd>" + esc(a.minat || "-") + "</dd></li>" +
-              "<li><dt>Domisili</dt><dd>" + esc(a.kota || "-") + "</dd></li>" +
-              "<li><dt>Status</dt><dd>" + esc(status.label) + "</dd></li>" +
-            "</ul>" +
+            '<dl class="info-list">' +
+              '<div class="info-list__row"><dt>Nama</dt><dd>' + esc(a.name) + "</dd></div>" +
+              (a.nickname ? '<div class="info-list__row"><dt>Panggilan</dt><dd>' + esc(a.nickname) + "</dd></div>" : "") +
+              '<div class="info-list__row"><dt>TTL</dt><dd>' + esc((a.ttl || {}).tempat || "-") + ", " + esc((a.ttl || {}).tanggal || "-") + "</dd></div>" +
+              '<div class="info-list__row"><dt>Jenis Kelamin</dt><dd>' + (a.gender === "P" ? "Perempuan" : "Laki-laki") + "</dd></div>" +
+              '<div class="info-list__row"><dt>Angkatan</dt><dd>' + esc(a.angkatan) + "</dd></div>" +
+              '<div class="info-list__row"><dt>Kelas</dt><dd>' + esc(a.kelas) + "</dd></div>" +
+              '<div class="info-list__row"><dt>Minat</dt><dd>' + esc(a.minat || "-") + "</dd></div>" +
+              '<div class="info-list__row"><dt>Domisili</dt><dd>' + esc(a.kota || "-") + "</dd></div>" +
+              '<div class="info-list__row"><dt>Status</dt><dd>' + esc(status.label) + "</dd></div>" +
+            "</dl>" +
           "</div>" +
 
           '<div class="panel">' +
@@ -165,11 +165,15 @@
             '<div class="gallery-grid" id="profileGallery">' +
               ((a.galeri || []).map(function (g, i) {
                 const bg = g.warna || "#1b6ca8";
+                const caption = g.caption || "";
                 const inner = g.src
-                  ? '<img class="gallery-item__img" src="' + esc(g.src) + '" alt="' + esc(g.caption || "") + '" loading="lazy" />'
-                  : '<div class="gallery-item__ph" style="background:linear-gradient(135deg,' + esc(bg) + ',#0a2540)">' + icon("image") + "</div>";
-                return '<figure class="gallery-item" data-index="' + i + '" style="cursor:pointer">' + inner +
-                  '<figcaption class="gallery-item__cap">' + esc(g.caption || "") + "</figcaption></figure>";
+                  ? '<img class="gallery-item__img" src="' + esc(g.src) + '" alt="' + esc(caption) + '" loading="lazy" decoding="async" />'
+                  : '<span class="gallery-item__ph" style="background:linear-gradient(135deg,' + esc(bg) + ',#0a2540)">' + icon("image") + "</span>";
+                return '<figure class="gallery-item" data-index="' + i + '">' +
+                  '<button class="gallery-item__open" type="button" aria-label="Perbesar foto: ' + esc(caption) + '">' +
+                    inner +
+                    '<span class="gallery-item__cap">' + esc(caption) + "</span>" +
+                  "</button></figure>";
               }).join("") || '<p class="muted small">Belum ada foto yang ditambahkan.</p>') +
             "</div>" +
           "</div>" +
@@ -235,14 +239,17 @@
   const gallery = document.getElementById("profileGallery");
   if (gallery) {
     const items = (a.galeri || []).map(function (g) {
-      return { src: g.src || "", caption: g.caption || "" };
+      return { src: g.src || "", caption: g.caption || "", warna: g.warna || "#1b6ca8" };
     });
     const lb = initLightbox();
-    gallery.addEventListener("click", function (e) {
-      const fig = e.target.closest(".gallery-item");
+    function openProfilePhoto(target) {
+      const btn = target.closest(".gallery-item__open");
+      if (!btn) return;
+      const fig = btn.closest(".gallery-item");
       if (!fig) return;
       lb.openWith(items, Number(fig.getAttribute("data-index")) || 0);
-    });
+    }
+    gallery.addEventListener("click", function (e) { openProfilePhoto(e.target); });
   }
 
   /* ---------- Judul dokumen ---------- */

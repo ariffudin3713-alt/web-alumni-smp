@@ -147,7 +147,8 @@ function renderHeader(active) {
   const host = document.getElementById("site-header");
   if (!host) return;
   const nav = NAV_ITEMS.map(function (item) {
-    return '<a href="' + item.href + '"' + (item.key === active ? ' class="is-active"' : "") + ">" + esc(item.label) + "</a>";
+    const mark = item.key === active ? ' class="is-active" aria-current="page"' : "";
+    return '<a href="' + item.href + '"' + mark + ">" + esc(item.label) + "</a>";
   }).join("");
 
   host.innerHTML =
@@ -160,14 +161,14 @@ function renderHeader(active) {
             '<span class="brand__sub">Alumni · ' + esc(cfg.school.tagline) + "</span>" +
           "</span>" +
         "</a>" +
-        '<nav class="nav" id="mainNav">' + nav + "</nav>" +
+        '<nav class="nav" id="mainNav" aria-label="Navigasi utama">' + nav + "</nav>" +
         '<div class="header__tools">' +
           '<a class="icon-btn" href="' + esc(cfg.instagram.profileUrl) + '" target="_blank" rel="noopener" title="Instagram angkatan" aria-label="Instagram angkatan">' + icon("instagram") + "</a>" +
           '<button class="icon-btn theme-toggle" id="themeToggle" type="button" title="Ganti tema" aria-label="Ganti tema">' +
             '<span class="sun">' + icon("sun") + "</span>" +
             '<span class="moon">' + icon("moon") + "</span>" +
           "</button>" +
-          '<button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="Buka menu">' + icon("menu") + "</button>" +
+          '<button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="Buka menu" aria-controls="mainNav" aria-expanded="false">' + icon("menu") + "</button>" +
         "</div>" +
       "</div>" +
     "</header>";
@@ -276,15 +277,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const navToggle = document.getElementById("navToggle");
   const nav = document.getElementById("mainNav");
   if (navToggle && nav) {
-    navToggle.addEventListener("click", function () {
-      const open = nav.classList.toggle("is-open");
+    function setNavOpen(open) {
+      nav.classList.toggle("is-open", open);
       navToggle.innerHTML = icon(open ? "x" : "menu");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.setAttribute("aria-label", open ? "Tutup menu" : "Buka menu");
+    }
+    navToggle.addEventListener("click", function () {
+      setNavOpen(!nav.classList.contains("is-open"));
     });
     nav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        nav.classList.remove("is-open");
-        navToggle.innerHTML = icon("menu");
-      }
+      if (e.target.tagName === "A") setNavOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) setNavOpen(false);
     });
   }
 
@@ -297,56 +303,117 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* ---------- Lightbox (dipakai bersama) ---------- */
+let __lightbox = null;
+
 function initLightbox() {
+  if (__lightbox) return __lightbox;
+
   let items = [];
   let index = 0;
+  let lastFocus = null;
 
   const box = document.createElement("div");
   box.className = "lightbox";
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-modal", "true");
+  box.setAttribute("aria-label", "Pratinjau foto");
+  box.setAttribute("aria-hidden", "true");
   box.innerHTML =
-    '<button class="lightbox__close" aria-label="Tutup">' + icon("x") + "</button>" +
-    '<button class="lightbox__nav lightbox__nav--prev" aria-label="Sebelumnya">' + icon("chevronLeft") + "</button>" +
-    '<button class="lightbox__nav lightbox__nav--next" aria-label="Berikutnya">' + icon("chevronRight") + "</button>" +
+    '<button class="lightbox__close" type="button" aria-label="Tutup pratinjau">' + icon("x") + "</button>" +
+    '<button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Foto sebelumnya">' + icon("chevronLeft") + "</button>" +
+    '<button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Foto berikutnya">' + icon("chevronRight") + "</button>" +
     '<div class="lightbox__figure">' +
       '<img class="lightbox__img" alt="" />' +
-      '<p class="lightbox__cap"></p>' +
+      '<div class="lightbox__ph" hidden>' +
+        '<span class="lightbox__ph-icon">' + icon("image") + "</span>" +
+        '<span class="lightbox__ph-text"></span>' +
+      "</div>" +
+      '<p class="lightbox__cap" aria-live="polite"></p>' +
     "</div>";
   document.body.appendChild(box);
+  // Saat tertutup, seluruh isi lightbox dikeluarkan dari urutan fokus & aksesibilitas.
+  box.inert = true;
 
   const img = box.querySelector(".lightbox__img");
+  const ph = box.querySelector(".lightbox__ph");
+  const phText = box.querySelector(".lightbox__ph-text");
   const cap = box.querySelector(".lightbox__cap");
+  const btnClose = box.querySelector(".lightbox__close");
+  const btnPrev = box.querySelector(".lightbox__nav--prev");
+  const btnNext = box.querySelector(".lightbox__nav--next");
 
   function show(i) {
     if (!items.length) return;
     index = (i + items.length) % items.length;
     const it = items[index];
+    const caption = it.caption || "";
+
     if (it.src) {
       img.src = it.src;
-      img.style.display = "";
+      img.alt = caption || "Foto angkatan";
+      img.hidden = false;
+      ph.hidden = true;
     } else {
       img.removeAttribute("src");
-      img.style.display = "none";
+      img.alt = "";
+      img.hidden = true;
+      ph.hidden = false;
+      ph.style.background =
+        "linear-gradient(135deg," + (it.warna || "#d62976") + ",#0a2540)";
+      phText.textContent = caption || "Foto angkatan";
     }
-    cap.textContent = (it.caption || "") + (items.length > 1 ? "  (" + (index + 1) + "/" + items.length + ")" : "");
-  }
-  function open(i) { box.classList.add("is-open"); show(i); document.body.style.overflow = "hidden"; }
-  function close() { box.classList.remove("is-open"); document.body.style.overflow = ""; }
 
-  box.querySelector(".lightbox__close").addEventListener("click", close);
-  box.querySelector(".lightbox__nav--prev").addEventListener("click", function () { show(index - 1); });
-  box.querySelector(".lightbox__nav--next").addEventListener("click", function () { show(index + 1); });
+    cap.textContent = caption + (items.length > 1 ? "  (" + (index + 1) + "/" + items.length + ")" : "");
+    const many = items.length > 1;
+    btnPrev.hidden = !many;
+    btnNext.hidden = !many;
+  }
+
+  function open(i) {
+    if (!items.length) return;
+    lastFocus = document.activeElement;
+    box.inert = false;
+    box.classList.add("is-open");
+    box.setAttribute("aria-hidden", "false");
+    show(i);
+    document.body.style.overflow = "hidden";
+    btnClose.focus();
+  }
+
+  function close() {
+    if (!box.classList.contains("is-open")) return;
+    box.classList.remove("is-open");
+    box.setAttribute("aria-hidden", "true");
+    box.inert = true;
+    document.body.style.overflow = "";
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    lastFocus = null;
+  }
+
+  btnClose.addEventListener("click", close);
+  btnPrev.addEventListener("click", function () { show(index - 1); });
+  btnNext.addEventListener("click", function () { show(index + 1); });
   box.addEventListener("click", function (e) { if (e.target === box) close(); });
   document.addEventListener("keydown", function (e) {
     if (!box.classList.contains("is-open")) return;
-    if (e.key === "Escape") close();
-    if (e.key === "ArrowLeft") show(index - 1);
-    if (e.key === "ArrowRight") show(index + 1);
+    if (e.key === "Escape") { close(); return; }
+    if (e.key === "ArrowLeft") { show(index - 1); return; }
+    if (e.key === "ArrowRight") { show(index + 1); return; }
+    if (e.key !== "Tab") return;
+    // Tahan fokus di dalam lightbox.
+    const focusables = [btnClose, btnPrev, btnNext].filter(function (b) { return !b.hidden; });
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  return {
+  __lightbox = {
     open: open,
     close: close,
     setItems: function (list) { items = list || []; },
     openWith: function (list, i) { items = list || []; open(i || 0); }
   };
+  return __lightbox;
 }

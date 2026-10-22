@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<script>
+/* Terapkan tema sebelum halaman digambar agar tidak berkedip. */
+(function () {
+  try {
+    var t = localStorage.getItem("alumni-theme");
+    if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e) { /* abaikan */ }
+})();
+</script>
 <title>SMP Negeri 1 Rongkop — Website Alumni</title>
 <meta name="description" content="Website alumni SMP Negeri 1 Rongkop. Lihat profil siswa, perjalanan sekolah lanjutan, galeri kelas yang tersambung dengan Instagram angkatan, dan sosial media setiap alumni." />
 <meta name="theme-color" content="#0a2540" />

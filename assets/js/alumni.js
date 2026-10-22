@@ -117,6 +117,7 @@
     elShuffle.addEventListener("click", function () {
       const acak = all.slice().sort(function () { return Math.random() - 0.5; }).slice(0, 6);
       grid.innerHTML = acak.map(cardTemplate).join("");
+      if (elEmpty) elEmpty.classList.add("hide");
       if (elCount) elCount.innerHTML = "Menampilkan <b>" + acak.length + "</b> alumni acak";
       toast("6 profil acak ditampilkan", "sparkles");
       if (typeof grid.scrollIntoView === "function") {

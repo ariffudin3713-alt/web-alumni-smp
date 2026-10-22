@@ -12,11 +12,12 @@
   if (statHost) {
     const angkatan = Array.from(new Set(all.map(function (a) { return a.angkatan; })));
     const lanjut = Array.from(new Set(all.map(function (a) { return a.sekolahLanjut; }).filter(Boolean)));
+    const kenangan = all.reduce(function (n, a) { return n + (a.galeri || []).length; }, 0);
     const stats = [
       { value: all.length, label: CFG.ui.statLabels.alumni, icon: "users" },
       { value: angkatan.length, label: CFG.ui.statLabels.angkatan, icon: "graduation" },
       { value: lanjut.length, label: CFG.ui.statLabels.lanjutan, icon: "school" },
-      { value: "@" + IG.username, label: CFG.ui.statLabels.ig, icon: "instagram" }
+      { value: kenangan, label: CFG.ui.statLabels.kenangan || "Foto Kenangan", icon: "camera" }
     ];
     statHost.innerHTML = stats.map(function (s) {
       return '<div class="stat-card">' +
@@ -54,26 +55,40 @@
   /* ---------- Excerpt galeri IG ---------- */
   const galHost = document.getElementById("igPreview");
   if (galHost) {
+    const WARNA = ["#1b6ca8", "#0d9488", "#f59e0b", "#7c3aed", "#d62976", "#0891b2"];
     const cache = window.IG_CACHE;
     const list = (cache && cache.posts ? cache.posts : []).slice(0, 6);
     if (list.length) {
       galHost.innerHTML = list.map(function (p, i) {
         const src = p.src || p.thumbnail || p.media_url || "";
+        const warna = p.warna || WARNA[i % WARNA.length];
+        const caption = p.caption || "Foto angkatan";
         const inner = src
-          ? '<img class="gallery-item__img" src="' + esc(src) + '" alt="' + esc(p.caption || "") + '" loading="lazy" />'
-          : '<div class="gallery-item__ph" style="background:linear-gradient(135deg,#d62976,#6228d7)">' + icon("image") + "</div>";
-        return '<figure class="gallery-item" data-index="' + i + '">' + inner +
-          '<figcaption class="gallery-item__cap">' + esc((p.caption || "Foto angkatan").slice(0, 48)) + "</figcaption></figure>";
+          ? '<img class="gallery-item__img" src="' + esc(src) + '" alt="' + esc(caption) + '" loading="lazy" decoding="async" />'
+          : '<span class="gallery-item__ph" style="background:linear-gradient(135deg,' + esc(warna) + ',#0a2540)">' + icon("image") + "</span>";
+        return '<figure class="gallery-item" data-index="' + i + '">' +
+          '<button class="gallery-item__open" type="button" aria-label="Perbesar foto: ' + esc(caption) + '">' +
+            inner +
+            '<span class="gallery-item__cap">' + esc(caption.slice(0, 48)) + "</span>" +
+          "</button></figure>";
       }).join("");
 
       const lb = initLightbox();
-      galHost.addEventListener("click", function (e) {
-        const fig = e.target.closest(".gallery-item");
-        if (!fig) return;
-        lb.openWith(list.map(function (p) {
-          return { src: p.src || p.thumbnail || p.media_url || "", caption: p.caption || "" };
-        }), Number(fig.getAttribute("data-index")) || 0);
+      const items = list.map(function (p, i) {
+        return {
+          src: p.src || p.thumbnail || p.media_url || "",
+          caption: p.caption || "",
+          warna: p.warna || WARNA[i % WARNA.length]
+        };
       });
+      function openPreview(target) {
+        const btn = target.closest(".gallery-item__open");
+        if (!btn) return;
+        const fig = btn.closest(".gallery-item");
+        if (!fig) return;
+        lb.openWith(items, Number(fig.getAttribute("data-index")) || 0);
+      }
+      galHost.addEventListener("click", function (e) { openPreview(e.target); });
     } else {
       galHost.innerHTML =
         '<div class="ig-panel" style="grid-column:1/-1">' +

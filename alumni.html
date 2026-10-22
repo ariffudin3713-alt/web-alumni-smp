@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<script>
+/* Terapkan tema sebelum halaman digambar agar tidak berkedip. */
+(function () {
+  try {
+    var t = localStorage.getItem("alumni-theme");
+    if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e) { /* abaikan */ }
+})();
+</script>
 <title>Direktori Alumni — SMP Negeri 1 Rongkop</title>
 <meta name="description" content="Direktori alumni SMP Negeri 1 Rongkop. Cari teman sekelas, filter berdasarkan angkatan, status, dan sekolah lanjutan yang dipilih." />
 <meta name="theme-color" content="#0a2540" />
@@ -50,7 +61,7 @@
     </div>
 
     <div class="result-bar">
-      <div class="result-bar__count" id="resultCount"></div>
+      <div class="result-bar__count" id="resultCount" role="status" aria-live="polite"></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn btn--ghost btn--sm" id="shuffleBtn" type="button">Acak profil</button>
         <button class="btn btn--ghost btn--sm" id="filterReset" type="button">Reset filter</button>

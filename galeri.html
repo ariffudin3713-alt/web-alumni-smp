@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<script>
+/* Terapkan tema sebelum halaman digambar agar tidak berkedip. */
+(function () {
+  try {
+    var t = localStorage.getItem("alumni-theme");
+    if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e) { /* abaikan */ }
+})();
+</script>
 <title>Galeri Kelas — SMP Negeri 1 Rongkop</title>
 <meta name="description" content="Galeri kelas angkatan SMP Negeri 1 Rongkop yang tersambung langsung dengan Instagram. Lihat semua foto angkatan dalam satu galeri." />
 <meta name="theme-color" content="#0a2540" />
@@ -53,7 +64,7 @@
             <select class="select" id="galeriFilter"></select>
           </div>
           <div class="field" style="grid-column:span 2;justify-content:end">
-            <span class="result-bar__count" id="galeriCount" style="align-self:end"></span>
+            <span class="result-bar__count" id="galeriCount" style="align-self:end" role="status" aria-live="polite"></span>
           </div>
         </div>
 

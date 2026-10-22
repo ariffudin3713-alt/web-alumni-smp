@@ -59,9 +59,9 @@
     "SMA/MAN": "chip--blue"
   };
 
-  host.innerHTML = schools.map(function (s) {
+  host.innerHTML = schools.map(function (s, i) {
     return (
-      '<article class="school-card">' +
+      '<article class="school-card" id="s' + i + '">' +
         '<div class="school-card__top">' +
           "<div>" +
             '<div class="school-card__type">' + esc(s.tingkat) + "</div>" +
@@ -96,11 +96,20 @@
         card.classList.toggle("hide", !visible);
         if (visible) shown++;
       });
+
+      // Saring juga tabel rekap agar konsisten dengan kartu.
+      let rows = 0;
+      document.querySelectorAll("#kotaTable tbody tr").forEach(function (tr) {
+        const show = !chosen || tr.getAttribute("data-kota") === chosen;
+        tr.classList.toggle("hide", !show);
+        if (show) rows++;
+      });
+
       const note = document.getElementById("kotaNote");
       if (note) {
         note.textContent = chosen
-          ? "Menampilkan " + shown + " institusi dengan alumni di kota " + chosen + "."
-          : "";
+          ? "Menampilkan " + shown + " institusi dan " + rows + " alumni di kota " + chosen + "."
+          : "Setiap kartu menampilkan jumlah alumni yang melanjutkan ke institusi tersebut.";
       }
     });
   }
@@ -118,7 +127,7 @@
         "</tr></thead><tbody>" +
         all.map(function (a) {
           const st = STATUS_META[a.status] || { label: a.status, chip: "" };
-          return "<tr>" +
+          return "<tr data-kota='" + esc(a.kota || "") + "'>" +
             '<td style="padding:10px;border-bottom:1px solid var(--c-line)"><a href="profil.html?id=' + encodeURIComponent(a.id) + '" style="font-weight:700">' + esc(a.name) + "</a></td>" +
             '<td style="padding:10px;border-bottom:1px solid var(--c-line)">' + esc(a.sekolahLanjut || "-") + "</td>" +
             '<td style="padding:10px;border-bottom:1px solid var(--c-line)">' + esc(a.kota || "-") + "</td>" +

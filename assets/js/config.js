@@ -33,7 +33,9 @@ window.SITE_CONFIG = {
       id: "" // contoh lightwidget: 1234567890 ; snapwidget: 987654321
     },
     api: {
-      enabled: true,
+      /* Set true HANYA setelah IG_ACCESS_TOKEN terpasang di server/hosting.
+         Jika true tanpa token, endpoint membalas 503 dan konsol menampilkan error. */
+      enabled: false,
       proxyPath: "/api/ig/posts"
     }
   },
@@ -48,7 +50,7 @@ window.SITE_CONFIG = {
       alumni: "Alumni Terdaftar",
       angkatan: "Angkatan Aktif",
       lanjutan: "Sekolah Lanjutan",
-      ig: "Pengikut IG"
+      kenangan: "Foto Kenangan"
     }
   }
 };
