@@ -428,10 +428,17 @@ function hapusKenangan(id) {
   const item = kenangan.find(k => k.id === id);
   if (!item) return;
   if (!confirm("Hapus kenangan “" + item.judul + "”? Tindakan ini tidak bisa dibatalkan.")) return;
+  const sebelum = kenangan.slice();
   kenangan = kenangan.filter(k => k.id !== id);
   const status = simpanKenangan(null);
+  if (status === "gagal") {
+    kenangan = sebelum;
+    renderGaleri();
+    sapaKabar("Gagal menghapus kenangan. Coba hapus kenangan lain atau kosongkan sebagian penyimpanan.");
+    return;
+  }
   renderGaleri();
-  sapaKabar(status === "gagal" ? "Kenangan dihapus dari layar, tetapi gagal disimpan." : "Kenangan dihapus.");
+  sapaKabar("Kenangan dihapus.");
 }
 
 function bukaLightbox(id) {
