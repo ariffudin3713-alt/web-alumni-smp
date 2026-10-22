@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Family · Alumni Angkatan 2016</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0e0d0b;--panel:#171513;--panel2:#201d19;--line:#3a3328;--ink:#ece4d2;--muted:#a39a85;--gold:#c3a063;--blood:#7d2424;--display:"Cinzel",Georgia,serif;--serif:"Libre Baskerville",Georgia,"Times New Roman",serif;--type:"Special Elite","Courier New",monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--serif)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:20}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;min-height:64px}
+.brand{font:700 18px var(--display);letter-spacing:.2em;color:var(--gold);text-decoration:none}
+nav ul{display:flex;flex-wrap:wrap;gap:22px;list-style:none;margin:0;padding:0}
+nav a{font:13px var(--display);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--gold)}
+section{padding:72px 0;border-top:1px solid var(--line)}
+.hero{border-top:0;padding:80px 0}
+.hero-box{position:relative;border:1px solid var(--gold);padding:64px 24px;text-align:center}
+.hero-box::before{content:"";position:absolute;inset:6px;border:1px solid var(--line);pointer-events:none}
+.stamp{font:13px var(--type);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0}
+h1{font:700 clamp(40px,8vw,84px)/1.1 var(--display);letter-spacing:.12em;margin:14px 0 8px}
+.hero-sub{font-style:italic;color:var(--muted);margin:0}
+.hero-quote{font-size:clamp(17px,2.4vw,21px);font-style:italic;max-width:620px;margin:32px auto 36px}
+.btn{display:inline-block;margin:6px;padding:12px 22px;border:1px solid var(--gold);background:transparent;color:var(--gold);font:13px var(--display);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.btn:hover,.btn.solid{background:var(--gold);color:var(--bg)}
+.judul{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.judul h2{font:700 clamp(24px,4vw,34px) var(--display);letter-spacing:.1em;margin:0}
+.roman{font:20px var(--type);color:var(--gold)}
+.sub{color:var(--muted);font-style:italic;margin:8px 0 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.card{position:relative;background:var(--panel);border:1px solid var(--line);padding:26px 22px 24px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.no{position:absolute;top:14px;right:16px;font:12px var(--type);color:var(--muted)}
+.avatar{display:grid;place-items:center;width:64px;height:64px;margin-bottom:16px;border-radius:50%;border:1px solid var(--gold);font:700 20px var(--display);color:var(--ink)}
+.nama{font:700 17px var(--display);letter-spacing:.03em;margin:0 0 2px}
+.julukan{font-style:italic;color:var(--gold);font-size:14px;margin:0 0 16px}
+.julukan::before,.kutipan::before{content:"“"}
+.julukan::after,.kutipan::after{content:"”"}
+.label{font:11px var(--type);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0}
+.impian{margin:4px 0 16px;font-size:15px}
+.kutipan{margin:0;padding-left:14px;border-left:2px solid var(--blood);font-style:italic;font-size:14px;color:var(--muted)}
+.aturan{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.aturan div{padding:22px;background:var(--panel2);border:1px solid var(--line)}
+.aturan b{display:block;font:700 15px var(--display);letter-spacing:.1em;color:var(--gold);margin-bottom:6px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;padding:24px;margin-bottom:40px;background:var(--panel);border:1px solid var(--line)}
+.form label{display:grid;gap:6px;font:12px var(--type);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lebar{grid-column:1/-1}
+.form input,.form textarea{font:15px var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:10px 12px;border-radius:0;letter-spacing:0;text-transform:none}
+.form input:focus,.form textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.form .btn{justify-self:start;margin:0}
+.galeri{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px}
+.kenangan{margin:0;padding:12px 12px 18px;background:var(--panel);border:1px solid var(--line)}
+.frame{display:grid;place-items:center;aspect-ratio:4/3;overflow:hidden;background:var(--panel2);border:1px solid var(--line)}
+.frame img{width:100%;height:100%;object-fit:cover}
+.ikon{font-size:50px}
+.kenangan h3{font:700 16px var(--display);letter-spacing:.03em;margin:14px 0 2px}
+.tgl{font:12px var(--type);color:var(--gold);margin:0 0 8px}
+.cerita{margin:0;font-size:14px;font-style:italic;color:var(--muted)}
+footer{padding:36px 0;border-top:1px solid var(--line);text-align:center;font:13px var(--type);color:var(--muted)}
+@media (max-width:640px){.form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#beranda">THE FAMILY</a>
+    <ul>
+      <li><a href="#profil">Keluarga</a></li>
+      <li><a href="#galeri">Kenangan</a></li>
+      <li><a href="#aturan">Aturan</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section id="beranda" class="hero">
+    <div class="wrap">
+      <div class="hero-box">
+        <p class="stamp">Est. 2016 · Alumni Angkatan</p>
+        <h1>THE FAMILY</h1>
+        <p class="hero-sub">Alumni SMA Harapan Bangsa · Angkatan 2016</p>
+        <p class="hero-quote">“Sekali satu kelas, selamanya satu keluarga.”</p>
+        <a class="btn solid" href="#profil">Kenali Keluarga</a>
+        <a class="btn" href="#galeri">Lihat Kenangan</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="profil">
+    <div class="wrap">
+      <div class="judul"><span class="roman">I</span><h2>Keluarga</h2></div>
+      <p class="sub">Tiga puluh dua anggota, masing-masing dengan impian dan kata-katanya sendiri.</p>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="wrap">
+      <div class="judul"><span class="roman">II</span><h2>Galeri Kenangan</h2></div>
+      <p class="sub">Potongan-potongan kelas yang tidak boleh hilang. Tambahkan kenanganmu sendiri di bawah.</p>
+      <form id="form-kenangan" class="form" autocomplete="off">
+        <label class="lebar">Judul kenangan
+          <input name="judul" required maxlength="60" placeholder="Mis. Study tour ke Bandung">
+        </label>
+        <label>Waktu
+          <input name="tanggal" maxlength="30" placeholder="Mis. Agustus 2018">
+        </label>
+        <label>Foto (opsional)
+          <input name="foto" type="file" accept="image/*">
+        </label>
+        <label class="lebar">Cerita
+          <textarea name="cerita" rows="3" maxlength="240" placeholder="Apa yang kamu ingat dari hari itu?"></textarea>
+        </label>
+        <button class="btn solid" type="submit">Simpan Kenangan</button>
+      </form>
+      <div class="galeri" id="galeri-list"></div>
+    </div>
+  </section>
+
+  <section id="aturan">
+    <div class="wrap">
+      <div class="judul"><span class="roman">III</span><h2>Kode Keluarga</h2></div>
+      <p class="sub">Aturan yang tidak tertulis, tapi selalu dipegang.</p>
+      <div class="aturan">
+        <div><b>Setia kawan</b>Tidak ada yang tertinggal di grup, sekalipun hanya sebatas sapaan.</div>
+        <div><b>Jaga rahasia</b>Cerita masa SMA tetap di dalam keluarga, kecuali yang sudah disepakati bersama.</div>
+        <div><b>Hadir saat dipanggil</b>Reuni, kabar duka, atau kabar gembira: datang, atau kirim kabar.</div>
+        <div><b>Bantu sesama</b>Jika ada yang butuh pertolongan, keluarga adalah orang pertama yang dihubungi.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Keluarga Besar Angkatan 2016 · Semua rahasia tetap di dalam keluarga</div>
+</footer>
+
+<script>
+const PALET = ["#5a1e1e", "#2f3d33", "#2a3345", "#4d3d24", "#3d2a3d"];
+
+const SISWA = [
+  {nama:"Ahmad Rizky Pratama", julukan:"Si Kalem", impian:"Punya usaha logistik sendiri yang mempekerjakan teman-teman lama dari kelas.", kutipan:"Diam itu bukan kalah. Kadang diam adalah strategi."},
+  {nama:"Siti Maharani", julukan:"Sang Ketua", impian:"Menjadi dokter spesialis anak dan membuka klinik gratis di desa.", kutipan:"Jangan meremehkan orang yang selalu datang paling pagi."},
+  {nama:"Bayu Saputra", julukan:"Si Gitar", impian:"Merilis album sendiri dan konser keliling Pulau Jawa bersama band SMA.", kutipan:"Nada yang salah pun bisa jadi lagu kalau diulang dengan hati."},
+  {nama:"Dewi Anggraini", julukan:"Si Tajam", impian:"Menjadi jaksa yang tidak takut pada siapa pun.", kutipan:"Hukum itu seperti pisau, tergantung siapa yang memegangnya."},
+  {nama:"Fajar Nugroho", julukan:"Sang Navigator", impian:"Berlayar keliling dunia dengan kapal layar sambil menulis buku perjalanan.", kutipan:"Peta boleh salah, asal kompas di tanganmu tetap menunjuk pulang."},
+  {nama:"Rina Kusumawati", julukan:"Si Ceria", impian:"Membuka toko kue yang namanya dikenal se-kota.", kutipan:"Manis itu pilihan, pahit itu bumbu."},
+  {nama:"Dimas Aditya", julukan:"Si Bos Kecil", impian:"Membangun properti dan sekolah gratis untuk anak yatim.", kutipan:"Uang bisa dicari, tapi kawan lama tidak bisa dibeli."},
+  {nama:"Nadia Permata", julukan:"Sang Pelukis", impian:"Mengadakan pameran tunggal di Paris dan Tokyo.", kutipan:"Warna gelap pun menyimpan cahaya kalau kamu mau melihatnya."},
+  {nama:"Yoga Pradipta", julukan:"Si Pemikir", impian:"Menjadi peneliti kecerdasan buatan yang membantu para petani.", kutipan:"Pertanyaan yang bagus lebih berharga daripada jawaban yang cepat."},
+  {nama:"Lina Oktaviani", julukan:"Si Lincah", impian:"Menjadi atlet bulu tangkis nasional lalu melatih anak-anak di kampung.", kutipan:"Kalah hari ini hanya catatan, bukan akhir cerita."},
+  {nama:"Hendra Wijaya", julukan:"Sang Penjaga", impian:"Membuka bengkel motor terbesar di kota kelahiran.", kutipan:"Mesin yang dirawat tidak pernah mengecewakan."},
+  {nama:"Putri Ayu Handayani", julukan:"Si Kutu Buku", impian:"Menerbitkan novel thriller pertama yang dibaca semua anak SMA.", kutipan:"Setiap halaman adalah pintu ke dunia yang belum pernah kamu lihat."},
+  {nama:"Rendi Firmansyah", julukan:"Si Kiper", impian:"Bermain di liga Eropa, lalu pulang membangun lapangan futsal gratis.", kutipan:"Yang menjaga gawang harus berani berdiri sendirian."},
+  {nama:"Maya Sari", julukan:"Sang Diplomat", impian:"Bekerja di organisasi internasional untuk pemerataan pendidikan.", kutipan:"Kata-kata yang tepat bisa menyelesaikan perang kecil."},
+  {nama:"Galih Prasetyo", julukan:"Si Tukang Foto", impian:"Menjadi fotografer majalah perjalanan dan pemilik studio sendiri.", kutipan:"Foto terbaik sering diambil saat kamu lupa membawa kamera."},
+  {nama:"Tasya Wulandari", julukan:"Si Manis", impian:"Menjadi desainer busana dengan butik sendiri di Jakarta.", kutipan:"Gaya bukan soal harga, tapi soal berani jadi diri sendiri."},
+  {nama:"Arif Hidayat", julukan:"Sang Insinyur", impian:"Membangun jembatan di pelosok yang belum punya akses.", kutipan:"Setiap jembatan dimulai dari satu tiang yang tidak terlihat."},
+  {nama:"Kartika Dewi", julukan:"Si Hitung Cepat", impian:"Membuka kantor akuntan publik dengan klien dari seluruh negeri.", kutipan:"Angka tidak pernah berbohong, hanya orang yang salah membacanya."},
+  {nama:"Ilham Ramadhan", julukan:"Si Pelari", impian:"Ikut maraton di lima benua.", kutipan:"Jangan lihat garis finis, lihat kaki yang melangkah hari ini."},
+  {nama:"Salsa Anindita", julukan:"Sang Penulis", impian:"Menulis skenario film yang tayang di bioskop tanah air.", kutipan:"Cerita yang jujur selalu menemukan penontonnya."},
+  {nama:"Okta Prasetya", julukan:"Si Koki", impian:"Punya restoran rumahan dengan menu warisan nenek.", kutipan:"Resep rahasianya cuma satu: masak dengan sabar dan dengan hati."},
+  {nama:"Dita Safitri", julukan:"Si Pendengar", impian:"Menjadi psikolog anak dan membantu anak-anak yang sulit bicara.", kutipan:"Telinga yang mau mendengar sering lebih kuat dari mulut yang bicara."},
+  {nama:"Farhan Maulana", julukan:"Sang Pengacara", impian:"Membela orang kecil yang tidak punya suara.", kutipan:"Keadilan kadang harus dikejar sampai ke ujung dunia."},
+  {nama:"Wulan Cahyani", julukan:"Si Lembut", impian:"Mengelola perpustakaan keliling untuk desa-desa terpencil.", kutipan:"Membaca itu seperti membuka jendela tanpa harus pindah rumah."},
+  {nama:"Ferdi Kurniawan", julukan:"Si Tukang Kopi", impian:"Membuka kafe tempat anak muda berdiskusi tentang mimpi mereka.", kutipan:"Kopinya pahit, tapi obrolan di dalamnya selalu manis."},
+  {nama:"Nisa Rahmawati", julukan:"Sang Dokter", impian:"Mendirikan rumah sakit kecil di kampung halaman.", kutipan:"Sehat itu harta yang paling sering dilupakan."},
+  {nama:"Aldo Setiawan", julukan:"Si Bintang Lapangan", impian:"Melatih tim basket sekolah sampai juara nasional.", kutipan:"Tim yang kompak selalu mengalahkan bakat yang bermain sendirian."},
+  {nama:"Citra Anggita", julukan:"Si Pengatur", impian:"Menjadi event organizer untuk konser musik besar.", kutipan:"Di luar boleh berantakan, asal di dalam tetap rapi."},
+  {nama:"Reza Mahendra", julukan:"Sang Arsitek", impian:"Merancang rumah ramah lingkungan untuk keluarga kelas menengah.", kutipan:"Rumah yang baik lahir dari cerita penghuninya."},
+  {nama:"Laras Kinanti", julukan:"Si Ceplas-ceplos", impian:"Menjadi jurnalis investigasi yang membongkar kebenaran.", kutipan:"Diam di saat yang salah juga sebuah pilihan, dan harganya mahal."},
+  {nama:"Yusuf Hakim", julukan:"Sang Penasihat", impian:"Membangun pesantren modern dengan kurikulum teknologi.", kutipan:"Ilmu yang diamalkan tidak akan pernah habis."},
+  {nama:"Vira Amelia", julukan:"Si Bungsu", impian:"Menjadi pilot dan terbang ke kota-kota yang belum pernah dia kunjungi.", kutipan:"Langit bukan batas, hanya pemandangan awal."}
+];
+
+const KENANGAN = [
+  {judul:"Hari Pertama MOS", tanggal:"Juli 2016", cerita:"Semua masih canggung, dan Pak Guru salah memanggil tiga orang sekaligus.", ikon:"🎒"},
+  {judul:"Upacara Bendera Hujan", tanggal:"Agustus 2016", cerita:"Kami berdiri di lapangan sampai basah kuyup dan tidak ada yang mau masuk duluan.", ikon:"🌧️"},
+  {judul:"Kantin Belakang", tanggal:"Oktober 2017", cerita:"Mi instan dua bungkus, satu telur, dan rencana masa depan yang ditulis di atas tisu.", ikon:"🍜"},
+  {judul:"Final Futsal Antar Kelas", tanggal:"Maret 2018", cerita:"Kalah di final, tapi yang menang tetap traktir es teh satu kelas.", ikon:"⚽"},
+  {judul:"Study Tour ke Bandung", tanggal:"November 2018", cerita:"Bus tua, lagu yang sama diputar seratus kali, dan foto buram di tengah hutan pinus.", ikon:"🚌"},
+  {judul:"Contekan Ujian Tengah Semester", tanggal:"April 2019", cerita:"Kertas kecil yang akhirnya jadi kenang-kenangan paling lucu.", ikon:"📚"},
+  {judul:"Malam Perpisahan", tanggal:"Mei 2019", cerita:"Lagu terakhir dinyanyikan sambil menangis, dan semua pura-pura tidak tahu.", ikon:"🎤"},
+  {judul:"Foto Kelas Terakhir", tanggal:"Juni 2019", cerita:"Kami berdesakan dan sengaja memasang wajah serius, seperti foto keluarga sungguhan.", ikon:"📸"}
+];
+
+const el = (tag, cls, text) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+};
+
+const inisial = n => n.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase();
+
+function buatProfil(s, i) {
+  const card = el("article", "card");
+  const av = el("div", "avatar", inisial(s.nama));
+  av.style.background = PALET[i % PALET.length];
+  card.append(
+    el("div", "no", "No. " + String(i + 1).padStart(2, "0")),
+    av,
+    el("h3", "nama", s.nama),
+    el("p", "julukan", s.julukan),
+    el("p", "label", "Impian"),
+    el("p", "impian", s.impian),
+    el("blockquote", "kutipan", s.kutipan)
+  );
+  return card;
+}
+
+function buatKenangan(k) {
+  const fig = el("figure", "kenangan");
+  const frame = el("div", "frame");
+  if (k.foto) {
+    const img = el("img");
+    img.src = k.foto;
+    img.alt = k.judul;
+    frame.append(img);
+  } else {
+    frame.append(el("span", "ikon", k.ikon || "📷"));
+  }
+  const cap = el("figcaption");
+  cap.append(el("h3", "", k.judul), el("p", "tgl", k.tanggal || ""), el("p", "cerita", k.cerita || ""));
+  fig.append(frame, cap);
+  return fig;
+}
+
+const grid = document.getElementById("grid");
+SISWA.forEach((s, i) => grid.append(buatProfil(s, i)));
+
+const galeri = document.getElementById("galeri-list");
+KENANGAN.forEach(k => galeri.append(buatKenangan(k)));
+
+const form = document.getElementById("form-kenangan");
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const judul = form.judul.value.trim();
+  if (!judul) return;
+  const file = form.foto.files[0];
+  const simpan = foto => {
+    const k = {
+      judul,
+      tanggal: form.tanggal.value.trim(),
+      cerita: form.cerita.value.trim(),
+      foto,
+      ikon: "📷"
+    };
+    KENANGAN.unshift(k);
+    galeri.prepend(buatKenangan(k));
+    form.reset();
+  };
+  if (file && file.type.startsWith("image/")) {
+    const reader = new FileReader();
+    reader.onload = () => simpan(reader.result);
+    reader.readAsDataURL(file);
+  } else {
+    simpan(null);
+  }
+});
+</script>
+</body>
+</html>
