@@ -11,6 +11,11 @@ Website alumni statis (HTML + CSS + JavaScript murni, tanpa framework) berisi:
 | Galeri kelas yang tersambung dengan Instagram | `galeri.html` |
 | Tentang sekolah & cara bergabung | `tentang.html` |
 
+**Situs live:** <https://web-alumni-smp.vercel.app>
+**Kode sumber:** <https://github.com/ariffudin3713-alt/web-alumni-smp>
+
+Setiap `git push` ke branch `main` otomatis deploy ulang ke Vercel.
+
 ---
 
 ## 1. Menjalankan
@@ -198,6 +203,28 @@ Situs ini statis, jadi bisa diunggah ke:
 - **Hosting cPanel / shared hosting** — unggah semua berkas ke `public_html`.
 
 Jangan lupa mengunggah folder `assets/` beserta seluruh isinya.
+
+### Kalau dipakai di Vercel
+
+Repo ini sudah terhubung ke proyek Vercel `web-alumni-smp`. Agar galeri bisa menampilkan
+Instagram secara **live**, tambahkan access token di:
+
+**Vercel → Project `web-alumni-smp` → Settings → Environment Variables**
+
+| Key | Nilai | Catatan |
+|---|---|---|
+| `IG_ACCESS_TOKEN` | token Instagram Anda | Wajib untuk mode live |
+| `IG_USER_ID` | nomor akun Instagram | Opsional, hanya untuk akun bisnis |
+
+Setelah menambah environment variable, deploy ulang:
+
+```bash
+vercel --prod
+```
+
+Endpoint galeri live berada di `/api/ig/posts` (dijalankan sebagai serverless function di
+`api/ig/posts.js`). Tanpa token, endpoint membalas `503` dan halaman galeri otomatis
+menampilkan mode manual. Token **tidak pernah** terkirim ke browser.
 
 ---
 
