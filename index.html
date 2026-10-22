@@ -1,615 +1,182 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="The Family — situs kenangan Alumni SMA Harapan Bangsa Angkatan 2016.">
-<meta name="theme-color" content="#0e0d0b">
-<title>The Family · Alumni Angkatan 2016</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
-<style>
-:root{color-scheme:dark;--bg:#0e0d0b;--panel:#171513;--panel2:#201d19;--line:#3a3328;--ink:#ece4d2;--muted:#a39a85;--gold:#c3a063;--blood:#7d2424;--display:"Cinzel",Georgia,serif;--serif:"Libre Baskerville",Georgia,"Times New Roman",serif;--type:"Special Elite","Courier New",monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--serif)}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:20}
-[hidden]{display:none!important}
-a{color:inherit}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;min-height:64px}
-.brand{font:700 18px var(--display);letter-spacing:.2em;color:var(--gold);text-decoration:none}
-nav ul{display:flex;flex-wrap:wrap;gap:22px;list-style:none;margin:0;padding:0}
-nav a{font:13px var(--display);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
-nav a:hover,nav a.aktif{color:var(--gold)}
-section{padding:72px 0;border-top:1px solid var(--line)}
-.hero{border-top:0;padding:80px 0}
-.hero-box{position:relative;border:1px solid var(--gold);padding:64px 24px;text-align:center}
-.hero-box::before{content:"";position:absolute;inset:6px;border:1px solid var(--line);pointer-events:none}
-.stamp{font:13px var(--type);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0}
-h1{font:700 clamp(40px,8vw,84px)/1.1 var(--display);letter-spacing:.12em;margin:14px 0 8px}
-.hero-sub{font-style:italic;color:var(--muted);margin:0}
-.hero-quote{font-size:clamp(17px,2.4vw,21px);font-style:italic;max-width:620px;margin:32px auto 36px}
-.hero-stat{margin:26px 0 0;font:12px var(--type);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.btn{display:inline-block;margin:6px;padding:12px 22px;border:1px solid var(--gold);background:transparent;color:var(--gold);font:13px var(--display);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer}
-.btn:hover,.btn.solid{background:var(--gold);color:var(--bg)}
-.btn:disabled{opacity:.55;cursor:progress}
-.judul{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.judul h2{font:700 clamp(24px,4vw,34px) var(--display);letter-spacing:.1em;margin:0}
-.roman{font:20px var(--type);color:var(--gold)}
-.sub{color:var(--muted);font-style:italic;margin:8px 0 40px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
-.card{position:relative;background:var(--panel);border:1px solid var(--line);padding:26px 22px 24px;transition:border-color .2s,transform .2s}
-.card:hover{border-color:var(--gold);transform:translateY(-3px)}
-.no{position:absolute;top:14px;right:16px;font:12px var(--type);color:var(--muted)}
-.avatar{display:grid;place-items:center;width:64px;height:64px;margin-bottom:16px;border-radius:50%;border:1px solid var(--gold);font:700 20px var(--display);color:var(--ink)}
-.nama{font:700 17px var(--display);letter-spacing:.03em;margin:0 0 2px}
-.julukan{font-style:italic;color:var(--gold);font-size:14px;margin:0 0 16px}
-.julukan::before,.kutipan::before{content:"\201C"}
-.julukan::after,.kutipan::after{content:"\201D"}
-.label{font:11px var(--type);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0}
-.impian{margin:4px 0 16px;font-size:15px}
-.kutipan{margin:0;padding-left:14px;border-left:2px solid var(--blood);font-style:italic;font-size:14px;color:var(--muted)}
-.aturan{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.aturan div{padding:22px;background:var(--panel2);border:1px solid var(--line)}
-.aturan b{display:block;font:700 15px var(--display);letter-spacing:.1em;color:var(--gold);margin-bottom:6px}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;padding:24px;margin-bottom:40px;background:var(--panel);border:1px solid var(--line)}
-.form label{display:grid;gap:6px;font:12px var(--type);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.lebar{grid-column:1/-1}
-.form input,.form textarea,.cari input{font:15px var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:10px 12px;border-radius:0;letter-spacing:0;text-transform:none}
-.form input:focus,.form textarea:focus,.cari input:focus{outline:2px solid var(--gold);outline-offset:1px}
-.form .btn{justify-self:start;margin:0}
-.form small{font:12px var(--serif);letter-spacing:0;text-transform:none;color:var(--muted);font-style:italic}
-.preview{display:flex;align-items:center;gap:16px;padding:12px;background:var(--bg);border:1px dashed var(--line)}
-.preview img{width:96px;height:72px;object-fit:cover;border:1px solid var(--line)}
-.preview button{font:12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--line);padding:8px 12px;cursor:pointer}
-.preview button:hover{border-color:var(--gold)}
-.cari{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 26px}
-.cari input{flex:1 1 280px}
-.cari input::placeholder{color:var(--muted)}
-.count{font:12px var(--type);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.galeri{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px}
-.kenangan{position:relative;margin:0;padding:12px 12px 18px;background:var(--panel);border:1px solid var(--line)}
-.frame{position:relative;display:grid;place-items:center;aspect-ratio:4/3;overflow:hidden;background:var(--panel2);border:1px solid var(--line)}
-.frame img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.kenangan .frame.bisa-zoom{cursor:zoom-in}
-.kenangan .frame.bisa-zoom:hover img{transform:scale(1.04)}
-.ikon{font-size:50px}
-.kenangan h3{font:700 16px var(--display);letter-spacing:.03em;margin:14px 0 2px;padding-right:32px}
-.tgl{font:12px var(--type);color:var(--gold);margin:0 0 8px}
-.cerita{margin:0;font-size:14px;font-style:italic;color:var(--muted);white-space:pre-line}
-.hapus{position:absolute;top:8px;right:8px;z-index:2;display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid var(--line);background:rgba(14,13,11,.82);color:var(--muted);font:16px/1 var(--display);cursor:pointer}
-.hapus:hover{border-color:var(--blood);background:var(--blood);color:#fff}
-.kosong{grid-column:1/-1;padding:40px 24px;border:1px dashed var(--line);text-align:center;color:var(--muted);font-style:italic}
-.toast{position:fixed;left:50%;bottom:24px;z-index:60;max-width:min(92vw,460px);margin:0;padding:12px 18px;background:var(--panel2);border:1px solid var(--gold);color:var(--ink);font:13px var(--serif);box-shadow:0 10px 30px rgba(0,0,0,.55);opacity:0;transform:translate(-50%,16px);pointer-events:none;transition:opacity .25s,transform .25s}
-.toast.tampil{opacity:1;transform:translate(-50%,0)}
-.lightbox{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:24px;background:rgba(5,4,3,.93)}
-.lightbox figure{margin:0;max-width:min(100%,1000px);text-align:center}
-.lightbox img{max-width:100%;max-height:76vh;border:1px solid var(--gold);background:var(--panel)}
-.lightbox figcaption{margin-top:12px;font:12px var(--type);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-.tutup-lightbox{position:absolute;top:16px;right:16px;width:44px;height:44px;border:1px solid var(--gold);background:transparent;color:var(--gold);font:22px/1 var(--display);cursor:pointer}
-.tutup-lightbox:hover{background:var(--gold);color:var(--bg)}
-footer{padding:36px 0;border-top:1px solid var(--line);text-align:center;font:13px var(--type);color:var(--muted)}
-@media (max-width:640px){.form{grid-template-columns:1fr}.hero-box{padding:48px 18px}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.frame img,.toast{transition:none}}
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="wrap">
-    <a class="brand" href="#beranda">THE FAMILY</a>
-    <ul>
-      <li><a href="#profil">Keluarga</a></li>
-      <li><a href="#galeri">Kenangan</a></li>
-      <li><a href="#aturan">Aturan</a></li>
-    </ul>
-  </div>
-</nav>
-
-<main>
-  <section id="beranda" class="hero">
-    <div class="wrap">
-      <div class="hero-box">
-        <p class="stamp">Est. 2016 · Alumni Angkatan</p>
-        <h1>THE FAMILY</h1>
-        <p class="hero-sub">Alumni SMA Harapan Bangsa · Angkatan 2016</p>
-        <p class="hero-quote">“Sekali satu kelas, selamanya satu keluarga.”</p>
-        <a class="btn solid" href="#profil">Kenali Keluarga</a>
-        <a class="btn" href="#galeri">Lihat Kenangan</a>
-        <p class="hero-stat" id="stat-hero" aria-live="polite"></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="profil">
-    <div class="wrap">
-      <div class="judul"><span class="roman">I</span><h2>Keluarga</h2></div>
-      <p class="sub">Tiga puluh dua anggota, masing-masing dengan impian dan kata-katanya sendiri.</p>
-      <div class="cari">
-        <label class="count" for="cari">Cari anggota</label>
-        <input id="cari" type="search" placeholder="Nama, julukan, atau mimpi…" autocomplete="off">
-        <span class="count" id="hasil-info" aria-live="polite"></span>
-      </div>
-      <div class="grid" id="grid"></div>
-    </div>
-  </section>
-
-  <section id="galeri">
-    <div class="wrap">
-      <div class="judul"><span class="roman">II</span><h2>Galeri Kenangan</h2></div>
-      <p class="sub">Potongan-potongan kelas yang tidak boleh hilang. Tambahkan kenanganmu sendiri di bawah.</p>
-      <form id="form-kenangan" class="form" autocomplete="off">
-        <label class="lebar">Judul kenangan
-          <input name="judul" required maxlength="60" placeholder="Mis. Study tour ke Bandung">
-        </label>
-        <label>Waktu
-          <input name="tanggal" maxlength="30" placeholder="Mis. Agustus 2018">
-        </label>
-        <label>Foto (opsional)
-          <input name="foto" type="file" accept="image/*">
-          <small>Maks. 8 MB, otomatis dikompres.</small>
-        </label>
-        <div class="lebar preview" id="preview" hidden>
-          <img id="preview-img" alt="Pratinjau foto yang dipilih">
-          <button type="button" id="batal-foto">Batalkan foto</button>
-        </div>
-        <label class="lebar">Cerita
-          <textarea name="cerita" rows="3" maxlength="240" placeholder="Apa yang kamu ingat dari hari itu?"></textarea>
-        </label>
-        <button class="btn solid" type="submit">Simpan Kenangan</button>
-      </form>
-      <div class="cari">
-        <label class="count" for="cari-kenangan">Cari kenangan</label>
-        <input id="cari-kenangan" type="search" placeholder="Judul, waktu, atau cerita…" autocomplete="off">
-        <span class="count" id="jumlah-kenangan" aria-live="polite"></span>
-      </div>
-      <div class="galeri" id="galeri-list"></div>
-    </div>
-  </section>
-
-  <section id="aturan">
-    <div class="wrap">
-      <div class="judul"><span class="roman">III</span><h2>Kode Keluarga</h2></div>
-      <p class="sub">Aturan yang tidak tertulis, tapi selalu dipegang.</p>
-      <div class="aturan">
-        <div><b>Setia kawan</b>Tidak ada yang tertinggal di grup, sekalipun hanya sebatas sapaan.</div>
-        <div><b>Jaga rahasia</b>Cerita masa SMA tetap di dalam keluarga, kecuali yang sudah disepakati bersama.</div>
-        <div><b>Hadir saat dipanggil</b>Reuni, kabar duka, atau kabar gembira: datang, atau kirim kabar.</div>
-        <div><b>Bantu sesama</b>Jika ada yang butuh pertolongan, keluarga adalah orang pertama yang dihubungi.</div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">© 2026 Keluarga Besar Angkatan 2016 · Semua rahasia tetap di dalam keluarga</div>
-</footer>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau foto kenangan" hidden>
-  <button class="tutup-lightbox" type="button" id="tutup-lightbox" aria-label="Tutup pratinjau">&times;</button>
-  <figure>
-    <img id="lightbox-img" alt="">
-    <figcaption id="lightbox-cap"></figcaption>
-  </figure>
-</div>
-
-<p class="toast" id="toast" role="status" aria-live="polite"></p>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
 <script>
-"use strict";
-
-const PALET = ["#5a1e1e", "#2f3d33", "#2a3345", "#4d3d24", "#3d2a3d"];
-
-const SISWA = [
-  {nama:"Ahmad Rizky Pratama", julukan:"Si Kalem", impian:"Punya usaha logistik sendiri yang mempekerjakan teman-teman lama dari kelas.", kutipan:"Diam itu bukan kalah. Kadang diam adalah strategi."},
-  {nama:"Siti Maharani", julukan:"Sang Ketua", impian:"Menjadi dokter spesialis anak dan membuka klinik gratis di desa.", kutipan:"Jangan meremehkan orang yang selalu datang paling pagi."},
-  {nama:"Bayu Saputra", julukan:"Si Gitar", impian:"Merilis album sendiri dan konser keliling Pulau Jawa bersama band SMA.", kutipan:"Nada yang salah pun bisa jadi lagu kalau diulang dengan hati."},
-  {nama:"Dewi Anggraini", julukan:"Si Tajam", impian:"Menjadi jaksa yang tidak takut pada siapa pun.", kutipan:"Hukum itu seperti pisau, tergantung siapa yang memegangnya."},
-  {nama:"Fajar Nugroho", julukan:"Sang Navigator", impian:"Berlayar keliling dunia dengan kapal layar sambil menulis buku perjalanan.", kutipan:"Peta boleh salah, asal kompas di tanganmu tetap menunjuk pulang."},
-  {nama:"Rina Kusumawati", julukan:"Si Ceria", impian:"Membuka toko kue yang namanya dikenal se-kota.", kutipan:"Manis itu pilihan, pahit itu bumbu."},
-  {nama:"Dimas Aditya", julukan:"Si Bos Kecil", impian:"Membangun properti dan sekolah gratis untuk anak yatim.", kutipan:"Uang bisa dicari, tapi kawan lama tidak bisa dibeli."},
-  {nama:"Nadia Permata", julukan:"Sang Pelukis", impian:"Mengadakan pameran tunggal di Paris dan Tokyo.", kutipan:"Warna gelap pun menyimpan cahaya kalau kamu mau melihatnya."},
-  {nama:"Yoga Pradipta", julukan:"Si Pemikir", impian:"Menjadi peneliti kecerdasan buatan yang membantu para petani.", kutipan:"Pertanyaan yang bagus lebih berharga daripada jawaban yang cepat."},
-  {nama:"Lina Oktaviani", julukan:"Si Lincah", impian:"Menjadi atlet bulu tangkis nasional lalu melatih anak-anak di kampung.", kutipan:"Kalah hari ini hanya catatan, bukan akhir cerita."},
-  {nama:"Hendra Wijaya", julukan:"Sang Penjaga", impian:"Membuka bengkel motor terbesar di kota kelahiran.", kutipan:"Mesin yang dirawat tidak pernah mengecewakan."},
-  {nama:"Putri Ayu Handayani", julukan:"Si Kutu Buku", impian:"Menerbitkan novel thriller pertama yang dibaca semua anak SMA.", kutipan:"Setiap halaman adalah pintu ke dunia yang belum pernah kamu lihat."},
-  {nama:"Rendi Firmansyah", julukan:"Si Kiper", impian:"Bermain di liga Eropa, lalu pulang membangun lapangan futsal gratis.", kutipan:"Yang menjaga gawang harus berani berdiri sendirian."},
-  {nama:"Maya Sari", julukan:"Sang Diplomat", impian:"Bekerja di organisasi internasional untuk pemerataan pendidikan.", kutipan:"Kata-kata yang tepat bisa menyelesaikan perang kecil."},
-  {nama:"Galih Prasetyo", julukan:"Si Tukang Foto", impian:"Menjadi fotografer majalah perjalanan dan pemilik studio sendiri.", kutipan:"Foto terbaik sering diambil saat kamu lupa membawa kamera."},
-  {nama:"Tasya Wulandari", julukan:"Si Manis", impian:"Menjadi desainer busana dengan butik sendiri di Jakarta.", kutipan:"Gaya bukan soal harga, tapi soal berani jadi diri sendiri."},
-  {nama:"Arif Hidayat", julukan:"Sang Insinyur", impian:"Membangun jembatan di pelosok yang belum punya akses.", kutipan:"Setiap jembatan dimulai dari satu tiang yang tidak terlihat."},
-  {nama:"Kartika Dewi", julukan:"Si Hitung Cepat", impian:"Membuka kantor akuntan publik dengan klien dari seluruh negeri.", kutipan:"Angka tidak pernah berbohong, hanya orang yang salah membacanya."},
-  {nama:"Ilham Ramadhan", julukan:"Si Pelari", impian:"Ikut maraton di lima benua.", kutipan:"Jangan lihat garis finis, lihat kaki yang melangkah hari ini."},
-  {nama:"Salsa Anindita", julukan:"Sang Penulis", impian:"Menulis skenario film yang tayang di bioskop tanah air.", kutipan:"Cerita yang jujur selalu menemukan penontonnya."},
-  {nama:"Okta Prasetya", julukan:"Si Koki", impian:"Punya restoran rumahan dengan menu warisan nenek.", kutipan:"Resep rahasianya cuma satu: masak dengan sabar dan dengan hati."},
-  {nama:"Dita Safitri", julukan:"Si Pendengar", impian:"Menjadi psikolog anak dan membantu anak-anak yang sulit bicara.", kutipan:"Telinga yang mau mendengar sering lebih kuat dari mulut yang bicara."},
-  {nama:"Farhan Maulana", julukan:"Sang Pengacara", impian:"Membela orang kecil yang tidak punya suara.", kutipan:"Keadilan kadang harus dikejar sampai ke ujung dunia."},
-  {nama:"Wulan Cahyani", julukan:"Si Lembut", impian:"Mengelola perpustakaan keliling untuk desa-desa terpencil.", kutipan:"Membaca itu seperti membuka jendela tanpa harus pindah rumah."},
-  {nama:"Ferdi Kurniawan", julukan:"Si Tukang Kopi", impian:"Membuka kafe tempat anak muda berdiskusi tentang mimpi mereka.", kutipan:"Kopinya pahit, tapi obrolan di dalamnya selalu manis."},
-  {nama:"Nisa Rahmawati", julukan:"Sang Dokter", impian:"Mendirikan rumah sakit kecil di kampung halaman.", kutipan:"Sehat itu harta yang paling sering dilupakan."},
-  {nama:"Aldo Setiawan", julukan:"Si Bintang Lapangan", impian:"Melatih tim basket sekolah sampai juara nasional.", kutipan:"Tim yang kompak selalu mengalahkan bakat yang bermain sendirian."},
-  {nama:"Citra Anggita", julukan:"Si Pengatur", impian:"Menjadi event organizer untuk konser musik besar.", kutipan:"Di luar boleh berantakan, asal di dalam tetap rapi."},
-  {nama:"Reza Mahendra", julukan:"Sang Arsitek", impian:"Merancang rumah ramah lingkungan untuk keluarga kelas menengah.", kutipan:"Rumah yang baik lahir dari cerita penghuninya."},
-  {nama:"Laras Kinanti", julukan:"Si Ceplas-ceplos", impian:"Menjadi jurnalis investigasi yang membongkar kebenaran.", kutipan:"Diam di saat yang salah juga sebuah pilihan, dan harganya mahal."},
-  {nama:"Yusuf Hakim", julukan:"Sang Penasihat", impian:"Membangun pesantren modern dengan kurikulum teknologi.", kutipan:"Ilmu yang diamalkan tidak akan pernah habis."},
-  {nama:"Vira Amelia", julukan:"Si Bungsu", impian:"Menjadi pilot dan terbang ke kota-kota yang belum pernah dia kunjungi.", kutipan:"Langit bukan batas, hanya pemandangan awal."}
-];
-
-const KENANGAN = [
-  {judul:"Hari Pertama MOS", tanggal:"Juli 2016", cerita:"Semua masih canggung, dan Pak Guru salah memanggil tiga orang sekaligus.", ikon:"🎒"},
-  {judul:"Upacara Bendera Hujan", tanggal:"Agustus 2016", cerita:"Kami berdiri di lapangan sampai basah kuyup dan tidak ada yang mau masuk duluan.", ikon:"🌧️"},
-  {judul:"Kantin Belakang", tanggal:"Oktober 2017", cerita:"Mi instan dua bungkus, satu telur, dan rencana masa depan yang ditulis di atas tisu.", ikon:"🍜"},
-  {judul:"Final Futsal Antar Kelas", tanggal:"Maret 2018", cerita:"Kalah di final, tapi yang menang tetap traktir es teh satu kelas.", ikon:"⚽"},
-  {judul:"Study Tour ke Bandung", tanggal:"November 2018", cerita:"Bus tua, lagu yang sama diputar seratus kali, dan foto buram di tengah hutan pinus.", ikon:"🚌"},
-  {judul:"Contekan Ujian Tengah Semester", tanggal:"April 2019", cerita:"Kertas kecil yang akhirnya jadi kenang-kenangan paling lucu.", ikon:"📚"},
-  {judul:"Malam Perpisahan", tanggal:"Mei 2019", cerita:"Lagu terakhir dinyanyikan sambil menangis, dan semua pura-pura tidak tahu.", ikon:"🎤"},
-  {judul:"Foto Kelas Terakhir", tanggal:"Juni 2019", cerita:"Kami berdesakan dan sengaja memasang wajah serius, seperti foto keluarga sungguhan.", ikon:"📸"}
-];
-
-const STORE_KEY = "thefamily.kenangan.v1";
-const MAX_FILE = 8 * 1024 * 1024;
-
-const el = (tag, cls, text) => {
-  const e = document.createElement(tag);
-  if (cls) e.className = cls;
-  if (text != null) e.textContent = text;
-  return e;
-};
-
-const inisial = n => n.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase();
-
-const buatId = () => (crypto.randomUUID ? crypto.randomUUID() : "k-" + Date.now() + "-" + Math.random().toString(16).slice(2));
-
-let toastTimer;
-function sapaKabar(pesan) {
-  const toast = document.getElementById("toast");
-  toast.textContent = pesan;
-  toast.classList.add("tampil");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("tampil"), 3800);
-}
-
-/* ---------- Profil ---------- */
-function buatProfil(s, i) {
-  const card = el("article", "card");
-  const av = el("div", "avatar", inisial(s.nama));
-  av.style.background = PALET[i % PALET.length];
-  av.setAttribute("aria-hidden", "true");
-  card.append(
-    el("div", "no", "No. " + String(i + 1).padStart(2, "0")),
-    av,
-    el("h3", "nama", s.nama),
-    el("p", "julukan", s.julukan),
-    el("p", "label", "Impian"),
-    el("p", "impian", s.impian),
-    el("blockquote", "kutipan", s.kutipan)
-  );
-  return card;
-}
-
-const grid = document.getElementById("grid");
-const hasilInfo = document.getElementById("hasil-info");
-const cari = document.getElementById("cari");
-
-function renderProfil(kueri) {
-  const t = (kueri || "").trim().toLowerCase();
-  const hasil = SISWA.map((s, i) => ({ s, i })).filter(({ s }) =>
-    !t || [s.nama, s.julukan, s.impian, s.kutipan].join(" ").toLowerCase().includes(t)
-  );
-
-  grid.replaceChildren();
-  if (!hasil.length) {
-    grid.append(el("p", "kosong", "Tidak ada anggota yang cocok dengan “" + kueri.trim() + "”."));
-  } else {
-    hasil.forEach(({ s, i }) => grid.append(buatProfil(s, i)));
-  }
-
-  hasilInfo.textContent = t
-    ? hasil.length + " dari " + SISWA.length + " anggota"
-    : SISWA.length + " anggota keluarga";
-}
-
-/* ---------- Kenangan: penyimpanan ---------- */
-function normalisasi(k) {
-  return {
-    id: k.id || buatId(),
-    judul: String(k.judul || "").slice(0, 60),
-    tanggal: String(k.tanggal || "").slice(0, 30),
-    cerita: String(k.cerita || "").slice(0, 240),
-    foto: typeof k.foto === "string" && k.foto.startsWith("data:image/") ? k.foto : null,
-    ikon: k.ikon || "📷",
-    waktu: Number(k.waktu) || Date.now()
-  };
-}
-
-function muatKenangan() {
+/* Terapkan tema sebelum halaman digambar agar tidak berkedip. */
+(function () {
   try {
-    const raw = localStorage.getItem(STORE_KEY);
-    if (raw) {
-      const data = JSON.parse(raw);
-      if (Array.isArray(data)) return data.map(normalisasi);
-    }
-  } catch (err) {
-    console.warn("Data kenangan tidak dapat dibaca:", err);
+    var t = localStorage.getItem("alumni-theme");
+    if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e) { /* abaikan */ }
+})();
+</script>
+<title>SMP Negeri 1 Rongkop — Website Alumni</title>
+<meta name="description" content="Website alumni SMP Negeri 1 Rongkop. Lihat profil siswa, perjalanan sekolah lanjutan, galeri kelas yang tersambung dengan Instagram angkatan, dan sosial media setiap alumni." />
+<meta name="theme-color" content="#0a2540" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a2540'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%23f59e0b' text-anchor='middle'%3E1%3C/text%3E%3C/svg%3E" />
+</head>
+<body data-page="home">
+
+<div id="site-header"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__inner">
+      <div>
+        <span class="eyebrow" style="background:rgba(255,255,255,.14);color:#fff">Website Alumni Resmi</span>
+        <h1 id="heroTitle">Jejak Kita,<br /><em>Kisah yang Tak Pernah Hilang.</em></h1>
+        <p class="hero__lead" id="heroLead">
+          Temukan kembali teman sekelas, telusuri perjalanan sekolah lanjutan mereka,
+          dan jelajahi galeri kelas yang hidup di Instagram angkatan kami.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="alumni.html">Jelajahi Alumni</a>
+          <a class="btn btn--light" href="galeri.html">Galeri Kelas</a>
+        </div>
+      </div>
+      <div class="hero__stats" id="heroStats"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FITUR ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Apa Saja yang Ada</span>
+      <h2>Satu tempat untuk <span class="title-underline">mengecek kabar lama</span></h2>
+      <p>Setiap alumni punya satu halaman pribadi berisi biodata, perjalanan sekolah lanjutan, tautan sosial media, dan galeri kenangan.</p>
+    </div>
+
+    <div class="grid-features">
+      <article class="feature">
+        <span class="feature__icon" data-icon="users"></span>
+        <h3>Profil Lengkap Alumni</h3>
+        <p>Biodata, minat, keahlian, prestasi, organisasi, dan kenangan favorit setiap siswa dapat dilihat satu per satu.</p>
+      </article>
+      <article class="feature feature--teal">
+        <span class="feature__icon" data-icon="graduation"></span>
+        <h3>Jejak Sekolah Lanjutan</h3>
+        <p>Jejak pendidikan dari SMP menuju SMA, SMK, MAN, hingga perguruan tinggi, lengkap dengan jurusan yang diambil.</p>
+      </article>
+      <article class="feature feature--gold">
+        <span class="feature__icon" data-icon="instagram"></span>
+        <h3>Galeri Tersambung Instagram</h3>
+        <p>Galeri kelas ditarik langsung dari akun Instagram angkatan, bisa melalui widget, API, atau hasil sinkron otomatis.</p>
+      </article>
+      <article class="feature">
+        <span class="feature__icon" data-icon="share"></span>
+        <h3>Sosial Media Alumni</h3>
+        <p>Instagram, TikTok, Facebook, X, LinkedIn, YouTube, GitHub, dan WhatsApp tersusun rapi di setiap profil.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPOTLIGHT ============ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-head section-head--left" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+      <div style="max-width:560px">
+        <span class="eyebrow">Sorotan</span>
+        <h2 style="margin-bottom:6px">Alumni Pilihan</h2>
+        <p style="margin:0">Sebagian teman yang kami kenang dan banggakan. Klik untuk melihat profil lengkapnya.</p>
+      </div>
+      <a class="btn btn--ghost" href="alumni.html">Lihat semua alumni</a>
+    </div>
+
+    <div class="grid-alumni" id="spotlight"></div>
+  </div>
+</section>
+
+<!-- ============ GALERI IG ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--left" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+      <div style="max-width:560px">
+        <span class="eyebrow">Instagram Angkatan</span>
+        <h2 style="margin-bottom:6px">Galeri Kelas, Langsung dari IG</h2>
+        <p style="margin:0">Semua foto angkatan terkumpul di satu akun. Galeri di bawah ini disambungkan secara otomatis dari Instagram.</p>
+      </div>
+      <a class="btn btn--primary" id="igFollowBtn" href="#" target="_blank" rel="noopener">Ikuti di Instagram</a>
+    </div>
+
+    <div class="gallery-grid" id="igPreview"></div>
+  </div>
+</section>
+
+<!-- ============ SEKOLAH LANJUTAN ============ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Tujuan Setelah Lulus</span>
+      <h2>Ke mana teman-teman kami <span class="title-underline">melanjutkan?</span></h2>
+      <p>Berikut institusi yang menjadi tempat studi lanjutan alumni kami.</p>
+    </div>
+    <div class="text-center" id="destinasi"></div>
+    <div class="text-center" style="margin-top:26px">
+      <a class="btn btn--primary" href="lanjutan.html">Lihat lengkap jejak sekolah lanjutan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Belum ada datamu di sini?</h2>
+      <p>Website ini hidup dari data yang dikirim alumni sendiri. Kirim data profil, foto, dan tautan sosial medianya ke pengelola sekolah agar teman-teman bisa menemukanmu.</p>
+      <div class="cta-band__actions">
+        <a class="btn btn--gold" id="ctaMail" href="#">Kirim data profil</a>
+        <a class="btn btn--light" id="ctaIg" href="#" target="_blank" rel="noopener">Tanya di Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/gallery-cache.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/home.js"></script>
+<script>
+/* Isi tombol & ikon yang bergantung pada konfigurasi */
+(function () {
+  var cfg = window.SITE_CONFIG;
+  var ig = cfg.instagram;
+
+  var follow = document.getElementById("igFollowBtn");
+  if (follow) follow.href = ig.profileUrl;
+
+  var ctaMail = document.getElementById("ctaMail");
+  if (ctaMail) ctaMail.href = "mailto:" + cfg.school.email + "?subject=Data%20Profil%20Alumni%20SMPN%201%20Rongkop";
+
+  var ctaIg = document.getElementById("ctaIg");
+  if (ctaIg) ctaIg.href = ig.profileUrl;
+
+  var title = document.getElementById("heroTitle");
+  if (title && cfg.ui.heroTitle) {
+    var parts = cfg.ui.heroTitle.split(",");
+    title.innerHTML = parts[0] + ",<br /><em>" + (parts.slice(1).join(",").trim() || "") + "</em>";
   }
-  return KENANGAN.map(normalisasi);
-}
+  var lead = document.getElementById("heroLead");
+  if (lead && cfg.ui.heroSubtitle) lead.textContent = cfg.ui.heroSubtitle;
 
-function simpanKenangan(item) {
-  try {
-    localStorage.setItem(STORE_KEY, JSON.stringify(kenangan));
-    return "ok";
-  } catch (err) {
-    // Kuota penuh: coba simpan ulang tanpa foto pada item terbaru.
-    if (item && item.foto) {
-      item.foto = null;
-      try {
-        localStorage.setItem(STORE_KEY, JSON.stringify(kenangan));
-        return "tanpa-foto";
-      } catch (err2) {
-        console.warn("Penyimpanan penuh:", err2);
-      }
-    }
-    return "gagal";
-  }
-}
-
-let kenangan = muatKenangan();
-let kueriGaleri = "";
-
-/* ---------- Kenangan: tampilan ---------- */
-const galeri = document.getElementById("galeri-list");
-const jumlahKenangan = document.getElementById("jumlah-kenangan");
-const statHero = document.getElementById("stat-hero");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxCap = document.getElementById("lightbox-cap");
-let pemicuLightbox = null;
-
-function buatKenangan(k) {
-  const fig = el("figure", "kenangan");
-  const frame = el("div", "frame");
-
-  if (k.foto) {
-    const img = el("img");
-    img.src = k.foto;
-    img.alt = "Foto kenangan: " + k.judul;
-    img.loading = "lazy";
-    img.decoding = "async";
-    img.dataset.zoom = k.id;
-    frame.classList.add("bisa-zoom");
-    frame.append(img);
-  } else {
-    frame.append(el("span", "ikon", k.ikon || "📷"));
-  }
-
-  const hapus = el("button", "hapus", "×");
-  hapus.type = "button";
-  hapus.dataset.hapus = k.id;
-  hapus.setAttribute("aria-label", "Hapus kenangan " + k.judul);
-  hapus.title = "Hapus kenangan";
-
-  const cap = el("figcaption");
-  cap.append(
-    el("h3", "", k.judul),
-    el("p", "tgl", k.tanggal || ""),
-    el("p", "cerita", k.cerita || "")
-  );
-
-  fig.append(hapus, frame, cap);
-  return fig;
-}
-
-function renderGaleri() {
-  const t = kueriGaleri.trim().toLowerCase();
-  const hasil = kenangan.filter(k =>
-    !t || [k.judul, k.tanggal, k.cerita].join(" ").toLowerCase().includes(t)
-  );
-
-  galeri.replaceChildren();
-  if (!hasil.length) {
-    galeri.append(el("p", "kosong", t
-      ? "Tidak ada kenangan yang cocok dengan “" + kueriGaleri.trim() + "”."
-      : "Belum ada kenangan. Tulis kenangan pertamamu di atas."));
-  } else {
-    hasil.forEach(k => galeri.append(buatKenangan(k)));
-  }
-
-  jumlahKenangan.textContent = t
-    ? hasil.length + " dari " + kenangan.length + " kenangan"
-    : kenangan.length + " kenangan tersimpan";
-  statHero.textContent = SISWA.length + " anggota keluarga · " + kenangan.length + " kenangan tersimpan";
-}
-
-function hapusKenangan(id) {
-  const item = kenangan.find(k => k.id === id);
-  if (!item) return;
-  if (!confirm("Hapus kenangan “" + item.judul + "”? Tindakan ini tidak bisa dibatalkan.")) return;
-  const sebelum = kenangan.slice();
-  kenangan = kenangan.filter(k => k.id !== id);
-  const status = simpanKenangan(null);
-  if (status === "gagal") {
-    kenangan = sebelum;
-    renderGaleri();
-    sapaKabar("Gagal menghapus kenangan. Coba hapus kenangan lain atau kosongkan sebagian penyimpanan.");
-    return;
-  }
-  renderGaleri();
-  sapaKabar("Kenangan dihapus.");
-}
-
-function bukaLightbox(id) {
-  const item = kenangan.find(k => k.id === id && k.foto);
-  if (!item) return;
-  pemicuLightbox = document.activeElement;
-  lightboxImg.src = item.foto;
-  lightboxImg.alt = "Foto kenangan: " + item.judul;
-  lightboxCap.textContent = [item.judul, item.tanggal].filter(Boolean).join(" · ");
-  lightbox.hidden = false;
-  document.body.style.overflow = "hidden";
-  document.getElementById("tutup-lightbox").focus();
-}
-
-function tutupLightbox() {
-  if (lightbox.hidden) return;
-  lightbox.hidden = true;
-  lightboxImg.removeAttribute("src");
-  document.body.style.overflow = "";
-  if (pemicuLightbox && pemicuLightbox.focus) pemicuLightbox.focus();
-  pemicuLightbox = null;
-}
-
-/* ---------- Upload foto ---------- */
-function kompresGambar(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onerror = () => reject(new Error("Gagal membaca file."));
-    reader.onload = () => {
-      const img = new Image();
-      img.onerror = () => reject(new Error("File bukan gambar yang valid."));
-      img.onload = () => {
-        const maks = 1280;
-        const skala = Math.min(1, maks / Math.max(img.width, img.height));
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.max(1, Math.round(img.width * skala));
-        canvas.height = Math.max(1, Math.round(img.height * skala));
-        const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#0e0d0b";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        resolve(canvas.toDataURL("image/jpeg", 0.78));
-      };
-      img.src = reader.result;
-    };
-    reader.readAsDataURL(file);
+  document.querySelectorAll("[data-icon]").forEach(function (el) {
+    el.innerHTML = window.icon(el.getAttribute("data-icon"));
   });
-}
-
-const form = document.getElementById("form-kenangan");
-const inputFoto = form.elements.foto;
-const preview = document.getElementById("preview");
-const previewImg = document.getElementById("preview-img");
-let previewUrl = null;
-
-function bersihkanPreview() {
-  if (previewUrl) URL.revokeObjectURL(previewUrl);
-  previewUrl = null;
-  preview.hidden = true;
-  previewImg.removeAttribute("src");
-}
-
-inputFoto.addEventListener("change", () => {
-  bersihkanPreview();
-  const file = inputFoto.files[0];
-  if (!file || !file.type.startsWith("image/")) return;
-  previewUrl = URL.createObjectURL(file);
-  previewImg.src = previewUrl;
-  preview.hidden = false;
-});
-
-document.getElementById("batal-foto").addEventListener("click", () => {
-  inputFoto.value = "";
-  bersihkanPreview();
-});
-
-/* ---------- Aksi ---------- */
-form.addEventListener("submit", async e => {
-  e.preventDefault();
-  const judul = form.elements.judul.value.trim();
-  if (!judul) {
-    form.elements.judul.focus();
-    sapaKabar("Judul kenangan wajib diisi.");
-    return;
-  }
-
-  const tombol = form.querySelector('button[type="submit"]');
-  tombol.disabled = true;
-  const teksAsli = tombol.textContent;
-  tombol.textContent = "Menyimpan…";
-
-  let foto = null;
-  const file = inputFoto.files[0];
-  if (file) {
-    if (!file.type.startsWith("image/")) {
-      sapaKabar("File yang dipilih bukan gambar. Kenangan disimpan tanpa foto.");
-    } else if (file.size > MAX_FILE) {
-      sapaKabar("Foto lebih dari 8 MB. Kenangan disimpan tanpa foto.");
-    } else {
-      try {
-        foto = await kompresGambar(file);
-      } catch (err) {
-        console.warn(err);
-        sapaKabar("Foto gagal diproses. Kenangan disimpan tanpa foto.");
-      }
-    }
-  }
-
-  const item = normalisasi({
-    judul,
-    tanggal: form.elements.tanggal.value.trim(),
-    cerita: form.elements.cerita.value.trim(),
-    foto,
-    ikon: "📷",
-    waktu: Date.now()
-  });
-
-  kenangan.unshift(item);
-  const status = simpanKenangan(item);
-  form.reset();
-  bersihkanPreview();
-  tombol.disabled = false;
-  tombol.textContent = teksAsli;
-  renderGaleri();
-
-  if (status === "ok") sapaKabar("Kenangan tersimpan di perangkat ini.");
-  else if (status === "tanpa-foto") sapaKabar("Penyimpanan browser penuh, kenangan disimpan tanpa foto.");
-  else sapaKabar("Penyimpanan browser penuh. Hapus beberapa kenangan lama lalu coba lagi.");
-});
-
-cari.addEventListener("input", () => renderProfil(cari.value));
-document.getElementById("cari-kenangan").addEventListener("input", e => {
-  kueriGaleri = e.target.value;
-  renderGaleri();
-});
-
-galeri.addEventListener("click", e => {
-  const tombolHapus = e.target.closest("[data-hapus]");
-  if (tombolHapus) {
-    hapusKenangan(tombolHapus.dataset.hapus);
-    return;
-  }
-  const gambar = e.target.closest("[data-zoom]");
-  if (gambar) bukaLightbox(gambar.dataset.zoom);
-});
-
-document.getElementById("tutup-lightbox").addEventListener("click", tutupLightbox);
-lightbox.addEventListener("click", e => {
-  if (e.target === lightbox) tutupLightbox();
-});
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") tutupLightbox();
-});
-
-// Sorot menu sesuai bagian yang sedang dilihat.
-const tautanNav = Array.from(document.querySelectorAll("nav ul a"));
-if ("IntersectionObserver" in window) {
-  const pengamat = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      tautanNav.forEach(a => a.classList.toggle("aktif", a.getAttribute("href") === "#" + entry.target.id));
-    });
-  }, { rootMargin: "-45% 0px -50% 0px" });
-  ["beranda", "profil", "galeri", "aturan"].forEach(id => {
-    const bagian = document.getElementById(id);
-    if (bagian) pengamat.observe(bagian);
-  });
-}
-
-renderProfil("");
-renderGaleri();
+})();
 </script>
 </body>
 </html>
