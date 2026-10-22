@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Direktori Alumni — SMP Negeri 1 Rongkop</title>
+<meta name="description" content="Direktori alumni SMP Negeri 1 Rongkop. Cari teman sekelas, filter berdasarkan angkatan, status, dan sekolah lanjutan yang dipilih." />
+<meta name="theme-color" content="#0a2540" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a2540'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%23f59e0b' text-anchor='middle'%3E1%3C/text%3E%3C/svg%3E" />
+</head>
+<body data-page="alumni">
+
+<div id="site-header"></div>
+
+<section class="section section--tight" style="padding-top:44px">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:30px">
+      <span class="eyebrow">Direktori</span>
+      <h2>Semua Alumni dalam <span class="title-underline">Satu Halaman</span></h2>
+      <p>Cari nama teman, filter berdasarkan angkatan, sekolah lanjutan, atau status sekarang.</p>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-bar">
+      <div class="filter-row">
+        <div class="field">
+          <label for="filterSearch">Cari alumni</label>
+          <div class="search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input class="input" type="search" id="filterSearch" placeholder="Nama, minat, kota, sekolah lanjutan..." autocomplete="off" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="filterAngkatan">Angkatan</label>
+          <select class="select" id="filterAngkatan"></select>
+        </div>
+        <div class="field">
+          <label for="filterLanjut">Sekolah lanjutan</label>
+          <select class="select" id="filterLanjut"></select>
+        </div>
+        <div class="field">
+          <label for="filterStatus">Status</label>
+          <select class="select" id="filterStatus"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-bar">
+      <div class="result-bar__count" id="resultCount"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn--ghost btn--sm" id="shuffleBtn" type="button">Acak profil</button>
+        <button class="btn btn--ghost btn--sm" id="filterReset" type="button">Reset filter</button>
+      </div>
+    </div>
+
+    <div class="grid-alumni" id="alumniGrid"></div>
+
+    <div class="empty-state hide" id="emptyState">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <h3>Tidak ada alumni yang cocok</h3>
+      <p>Coba kata kunci lain atau reset filter yang aktif.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Nama kamu belum ada di daftar?</h2>
+      <p>Kirim biodata, foto, dan tautan sosial media ke pengelola sekolah. Data kamu akan tampil lengkap dengan profil, sekolah lanjutan, dan galeri kenangan.</p>
+      <div class="cta-band__actions">
+        <a class="btn btn--gold" id="ctaMail" href="#">Kirim data profil</a>
+        <a class="btn btn--light" id="ctaIg" href="#" target="_blank" rel="noopener">Tanya di Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/gallery-cache.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/alumni.js"></script>
+<script>
+(function () {
+  var cfg = window.SITE_CONFIG;
+  var mail = document.getElementById("ctaMail");
+  if (mail) mail.href = "mailto:" + cfg.school.email + "?subject=Data%20Profil%20Alumni%20SMPN%201%20Rongkop";
+  var ig = document.getElementById("ctaIg");
+  if (ig) ig.href = cfg.instagram.profileUrl;
+})();
+</script>
+</body>
+</html>

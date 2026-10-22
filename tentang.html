@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tentang — Website Alumni SMP Negeri 1 Rongkop</title>
+<meta name="description" content="Informasi sekolah, cara bergabung dengan website alumni, dan kontak pengelola website alumni SMP Negeri 1 Rongkop." />
+<meta name="theme-color" content="#0a2540" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a2540'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%23f59e0b' text-anchor='middle'%3E1%3C/text%3E%3C/svg%3E" />
+</head>
+<body data-page="tentang">
+
+<div id="site-header"></div>
+
+<section class="section section--tight" style="padding-top:44px">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Tentang</span>
+      <h2>Website Alumni <span class="title-underline">SMP Negeri 1 Rongkop</span></h2>
+      <p>Digital space untuk menyimpan dan membagikan jejak alumni: profil, sekolah lanjutan, sosial media, dan galeri kelas.</p>
+    </div>
+
+    <div class="profile-layout">
+      <aside>
+        <div class="panel">
+          <h3 class="panel__title" id="aboutTitle">Sekolah</h3>
+          <ul class="info-list" id="aboutInfo"></ul>
+        </div>
+        <div class="panel">
+          <h3 class="panel__title">Kontak Pengelola</h3>
+          <ul class="info-list" id="aboutContact"></ul>
+        </div>
+        <div class="panel">
+          <h3 class="panel__title">Ikuti Instagram</h3>
+          <p class="small muted" style="margin-top:-6px">Kirim data profil dan kenangan melalui DM.</p>
+          <a class="btn btn--primary btn--sm" id="aboutIg" href="#" target="_blank" rel="noopener" style="width:100%">Buka Instagram</a>
+        </div>
+      </aside>
+
+      <main>
+        <div class="panel">
+          <h3 class="panel__title">Tujuan Website</h3>
+          <p class="muted">Website ini dibuat sederhana agar mudah dirawat sendiri oleh pengelola sekolah, tanpa perlu biaya hosting khusus. Semua data alumni disimpan dalam satu berkas JavaScript yang bisa disunting kapan saja.</p>
+          <ul class="list-check">
+            <li>Menampilkan profil lengkap setiap alumni beserta biodata, keahlian, prestasi, dan organisasi.</li>
+            <li>Menelusuri jejak sekolah lanjutan: SMA, SMK, MAN, sampai perguruan tinggi.</li>
+            <li>Menyambung galeri kelas langsung ke Instagram angkatan.</li>
+            <li>Mengumpulkan tautan sosial media alumni di satu halaman profil.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel__title">Cara bergabung</h3>
+          <ol style="padding-left:20px;margin:0;color:var(--c-text-2);font-size:.93rem;line-height:1.9">
+            <li>Siapkan foto profil (bebas), ringkasan biodata, dan daftar tautan sosial media.</li>
+            <li>Kirim ke pengelola sekolah melalui email atau direct message Instagram angkatan.</li>
+            <li>Pengelola memasukkan data ke berkas <code>assets/js/data.js</code> lalu mengunggah situs ke hosting.</li>
+            <li>Profil kamu langsung dapat ditemukan di direktori alumni dan dapat dibagikan tautannya.</li>
+          </ol>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+            <a class="btn btn--gold btn--sm" id="aboutMail" href="#">Kirim lewat email</a>
+            <a class="btn btn--ghost btn--sm" id="aboutIg2" href="#" target="_blank" rel="noopener">Kirim lewat Instagram</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel__title">Pertanyaan umum</h3>
+          <div id="faq"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/gallery-cache.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function () {
+  var cfg = window.SITE_CONFIG;
+
+  var info = document.getElementById("aboutInfo");
+  info.innerHTML =
+    "<li><dt>Nama</dt><dd>" + cfg.school.name + "</dd></li>" +
+    "<li><dt>NPSN</dt><dd>" + cfg.school.npsn + "</dd></li>" +
+    "<li><dt>Alamat</dt><dd>" + cfg.school.address + "</dd></li>" +
+    "<li><dt>Tagline</dt><dd>" + cfg.school.tagline + "</dd></li>" +
+    "<li><dt>Website</dt><dd>Alumni " + cfg.school.short + "</dd></li>";
+
+  var contact = document.getElementById("aboutContact");
+  contact.innerHTML =
+    "<li><dt>Email</dt><dd>" + cfg.school.email + "</dd></li>" +
+    "<li><dt>Telepon</dt><dd>" + cfg.school.phone + "</dd></li>" +
+    "<li><dt>Instagram</dt><dd>@" + cfg.instagram.username + "</dd></li>";
+
+  document.getElementById("aboutIg").href = cfg.instagram.profileUrl;
+  document.getElementById("aboutIg2").href = cfg.instagram.profileUrl;
+  document.getElementById("aboutMail").href = "mailto:" + cfg.school.email + "?subject=Data%20Profil%20Alumni%20SMPN%201%20Rongkop";
+
+  var faq = [
+    ["Bagaimana cara galeri Instagram diperbarui?",
+     "Ada tiga cara: gunakan widget LightWidget/SnapWidget (cukup ID widget), jalankan backend Node dengan access token, atau jalankan tools/sync-ig.mjs untuk menulis berkas cache galeri."],
+    ["Bisakah saya menambah data alumni sendiri?",
+     "Bisa. Buka assets/js/data.js, salin satu blok alumni, lalu sesuaikan isinya. Setelah itu unggah ulang berkasnya."],
+    ["Apakah data ini bisa ditulis sebagai halaman HTML biasa?",
+     "Bisa. Seluruh situs memakai HTML, CSS, dan JavaScript tanpa framework, jadi bisa langsung dibuka maupun diunggah ke hosting statis apa pun."],
+    ["Bisakah foto asli saya dipasang?",
+     "Bisa. Letakkan berkas foto di folder assets/img lalu isi kolom src pada data alumni atau galeri cache."]
+  ];
+  document.getElementById("faq").innerHTML = faq.map(function (f) {
+    return '<div class="panel" style="box-shadow:none;margin:0;padding:16px 0;border:0;border-bottom:1px solid var(--c-line)">' +
+      "<h4 style='margin-bottom:4px'>" + f[0] + "</h4>" +
+      '<p class="muted small" style="margin:0">' + f[1] + "</p></div>";
+  }).join("");
+})();
+</script>
+</body>
+</html>

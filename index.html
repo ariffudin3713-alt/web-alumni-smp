@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SMP Negeri 1 Rongkop — Website Alumni</title>
+<meta name="description" content="Website alumni SMP Negeri 1 Rongkop. Lihat profil siswa, perjalanan sekolah lanjutan, galeri kelas yang tersambung dengan Instagram angkatan, dan sosial media setiap alumni." />
+<meta name="theme-color" content="#0a2540" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a2540'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%23f59e0b' text-anchor='middle'%3E1%3C/text%3E%3C/svg%3E" />
+</head>
+<body data-page="home">
+
+<div id="site-header"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__inner">
+      <div>
+        <span class="eyebrow" style="background:rgba(255,255,255,.14);color:#fff">Website Alumni Resmi</span>
+        <h1 id="heroTitle">Jejak Kita,<br /><em>Kisah yang Tak Pernah Hilang.</em></h1>
+        <p class="hero__lead" id="heroLead">
+          Temukan kembali teman sekelas, telusuri perjalanan sekolah lanjutan mereka,
+          dan jelajahi galeri kelas yang hidup di Instagram angkatan kami.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="alumni.html">Jelajahi Alumni</a>
+          <a class="btn btn--light" href="galeri.html">Galeri Kelas</a>
+        </div>
+      </div>
+      <div class="hero__stats" id="heroStats"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FITUR ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Apa Saja yang Ada</span>
+      <h2>Satu tempat untuk <span class="title-underline">mengecek kabar lama</span></h2>
+      <p>Setiap alumni punya satu halaman pribadi berisi biodata, perjalanan sekolah lanjutan, tautan sosial media, dan galeri kenangan.</p>
+    </div>
+
+    <div class="grid-features">
+      <article class="feature">
+        <span class="feature__icon" data-icon="users"></span>
+        <h3>Profil Lengkap Alumni</h3>
+        <p>Biodata, minat, keahlian, prestasi, organisasi, dan kenangan favorit setiap siswa dapat dilihat satu per satu.</p>
+      </article>
+      <article class="feature feature--teal">
+        <span class="feature__icon" data-icon="graduation"></span>
+        <h3>Jejak Sekolah Lanjutan</h3>
+        <p>Jejak pendidikan dari SMP menuju SMA, SMK, MAN, hingga perguruan tinggi, lengkap dengan jurusan yang diambil.</p>
+      </article>
+      <article class="feature feature--gold">
+        <span class="feature__icon" data-icon="instagram"></span>
+        <h3>Galeri Tersambung Instagram</h3>
+        <p>Galeri kelas ditarik langsung dari akun Instagram angkatan, bisa melalui widget, API, atau hasil sinkron otomatis.</p>
+      </article>
+      <article class="feature">
+        <span class="feature__icon" data-icon="share"></span>
+        <h3>Sosial Media Alumni</h3>
+        <p>Instagram, TikTok, Facebook, X, LinkedIn, YouTube, GitHub, dan WhatsApp tersusun rapi di setiap profil.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPOTLIGHT ============ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-head section-head--left" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+      <div style="max-width:560px">
+        <span class="eyebrow">Sorotan</span>
+        <h2 style="margin-bottom:6px">Alumni Pilihan</h2>
+        <p style="margin:0">Sebagian teman yang kami kenang dan banggakan. Klik untuk melihat profil lengkapnya.</p>
+      </div>
+      <a class="btn btn--ghost" href="alumni.html">Lihat semua alumni</a>
+    </div>
+
+    <div class="grid-alumni" id="spotlight"></div>
+  </div>
+</section>
+
+<!-- ============ GALERI IG ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--left" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+      <div style="max-width:560px">
+        <span class="eyebrow">Instagram Angkatan</span>
+        <h2 style="margin-bottom:6px">Galeri Kelas, Langsung dari IG</h2>
+        <p style="margin:0">Semua foto angkatan terkumpul di satu akun. Galeri di bawah ini disambungkan secara otomatis dari Instagram.</p>
+      </div>
+      <a class="btn btn--primary" id="igFollowBtn" href="#" target="_blank" rel="noopener">Ikuti di Instagram</a>
+    </div>
+
+    <div class="gallery-grid" id="igPreview"></div>
+  </div>
+</section>
+
+<!-- ============ SEKOLAH LANJUTAN ============ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Tujuan Setelah Lulus</span>
+      <h2>Ke mana teman-teman kami <span class="title-underline">melanjutkan?</span></h2>
+      <p>Berikut institusi yang menjadi tempat studi lanjutan alumni kami.</p>
+    </div>
+    <div class="text-center" id="destinasi"></div>
+    <div class="text-center" style="margin-top:26px">
+      <a class="btn btn--primary" href="lanjutan.html">Lihat lengkap jejak sekolah lanjutan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Belum ada datamu di sini?</h2>
+      <p>Website ini hidup dari data yang dikirim alumni sendiri. Kirim data profil, foto, dan tautan sosial medianya ke pengelola sekolah agar teman-teman bisa menemukanmu.</p>
+      <div class="cta-band__actions">
+        <a class="btn btn--gold" id="ctaMail" href="#">Kirim data profil</a>
+        <a class="btn btn--light" id="ctaIg" href="#" target="_blank" rel="noopener">Tanya di Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/gallery-cache.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/home.js"></script>
+<script>
+/* Isi tombol & ikon yang bergantung pada konfigurasi */
+(function () {
+  var cfg = window.SITE_CONFIG;
+  var ig = cfg.instagram;
+
+  var follow = document.getElementById("igFollowBtn");
+  if (follow) follow.href = ig.profileUrl;
+
+  var ctaMail = document.getElementById("ctaMail");
+  if (ctaMail) ctaMail.href = "mailto:" + cfg.school.email + "?subject=Data%20Profil%20Alumni%20SMPN%201%20Rongkop";
+
+  var ctaIg = document.getElementById("ctaIg");
+  if (ctaIg) ctaIg.href = ig.profileUrl;
+
+  var title = document.getElementById("heroTitle");
+  if (title && cfg.ui.heroTitle) {
+    var parts = cfg.ui.heroTitle.split(",");
+    title.innerHTML = parts[0] + ",<br /><em>" + (parts.slice(1).join(",").trim() || "") + "</em>";
+  }
+  var lead = document.getElementById("heroLead");
+  if (lead && cfg.ui.heroSubtitle) lead.textContent = cfg.ui.heroSubtitle;
+
+  document.querySelectorAll("[data-icon]").forEach(function (el) {
+    el.innerHTML = window.icon(el.getAttribute("data-icon"));
+  });
+})();
+</script>
+</body>
+</html>

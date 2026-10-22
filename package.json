@@ -1,0 +1,13 @@
+{
+  "name": "website-alumni-smpn1-rongkop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website alumni SMP Negeri 1 Rongkop - profil alumni, jejak sekolah lanjutan, galeri kelas tersambung Instagram, dan sosial media alumni.",
+  "scripts": {
+    "start": "node server.js",
+    "sync:ig": "node tools/sync-ig.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

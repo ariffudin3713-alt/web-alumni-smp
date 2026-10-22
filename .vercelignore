@@ -1,0 +1,7 @@
+# Berkas hanya untuk pengembangan lokal, tidak perlu diunggah ke Vercel
+server.js
+tools/
+README.md
+.git
+.gitignore
+node_modules/
